@@ -16,7 +16,6 @@ using Valve.VR;
      public float Deadzone;//the Deadzone of the trackpad. used to prevent unwanted walking.
      // Start is called before the first frame update
 
-     private float test ;
 
      private CapsuleCollider CapCollider;
      public PhysicMaterial NoFrictionMaterial;
@@ -32,16 +31,17 @@ using Valve.VR;
     void Update()
     {
         updateInput();
+        updateCollider(); //brauche ich das?
+
         //get the angle of the touch and correct it for the rotation of the controller
         moveDirection = Quaternion.AngleAxis(Angle(trackpad) + AxisHand.transform.localRotation.eulerAngles.y, Vector3.up) * Vector3.forward;
-        
 
-        Vector3 velocity = new Vector3(0,0,0);
+        Vector3 velocity = new Vector3(0, 0, 0); //??
+
         if (trackpad.magnitude > Deadzone && trackpad.x+trackpad.y != 0)
         {//make sure the touch isn't in the deadzone and we aren't going to fast or zero
             CapCollider.material = NoFrictionMaterial;
             rb.velocity = moveDirection;
-            //rb.velocity  = new Vector3(trackpad.x, 0, trackpad.y);
 
         }
      }
@@ -60,8 +60,14 @@ using Valve.VR;
 
      private void updateInput()
      {
-         trackpad = SteamVR_Actions._default.MovementAxis.GetAxis(MovementHand);
+         trackpad = TrackpadAction.GetAxis(MovementHand); ;
      }
- }
+
+    private void updateCollider()
+    {
+        CapCollider.height = Head.transform.localPosition.y;
+        CapCollider.center = new Vector3(Head.transform.localPosition.x, Head.transform.localPosition.y / 2, Head.transform.localPosition.z);
+    }
+}
 
  
