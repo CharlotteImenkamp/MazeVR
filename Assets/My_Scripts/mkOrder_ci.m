@@ -19,7 +19,7 @@ if percS*100 + percD*100 + percN*100 == 100
     
     while check == false && Ncheck <3                                       % Falls 20 Iterationen nicht ausreichen, nochmal mischen.
                                                                             % Falls nach 2 weiteren Versuchen kein Ergebnis dann Fehlermeldung 
-        Order = shuffle([S, D, N]);
+        Order = Shuffle([S, D, N]);
         
         swap = true;
         NLoop = 0;

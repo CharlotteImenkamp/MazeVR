@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 54587624234064098}
   - component: {fileID: 136239539305442568}
   - component: {fileID: 114051214696948948}
+  - component: {fileID: 2574352297405090970}
   m_Layer: 0
   m_Name: FirstPerson-AIO
   m_TagString: Player
@@ -151,8 +152,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743903104223250}
   m_LocalRotation: {x: -0, y: -1, z: 0, w: -0.0000001872535}
-  m_LocalPosition: {x: 0, y: 1.3, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -0, y: 1.3, z: 0.097}
+  m_LocalScale: {x: 0.49375, y: 0.64375, z: 0.7217249}
   m_Children:
   - {fileID: 4204582120663750}
   m_Father: {fileID: 0}
@@ -280,9 +281,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 1.8
-  m_Direction: 1
+  m_Radius: 2
+  m_Height: 2
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114051214696948948
 MonoBehaviour:
@@ -432,3 +433,16 @@ MonoBehaviour:
     - {fileID: 8300000, guid: fef61cddf814a2c49bf7a6c33791c766, type: 3}
     - {fileID: 8300000, guid: 73f938638097f8042ad7842aa5b04ac5, type: 3}
     - {fileID: 8300000, guid: e06c6ae1948cafd45a952ab85ebe4fa7, type: 3}
+--- !u!65 &2574352297405090970
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743903104223250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

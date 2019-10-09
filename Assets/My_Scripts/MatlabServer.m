@@ -22,7 +22,7 @@ flag = 1;
 
 % initiate the while loop 
 while true
-    while flag == 1
+    
     % stays here until a connection is there
     disp("Server open");
     fopen(tcpipServer);
@@ -32,9 +32,10 @@ while true
     %     fwrite(tcpipServer,"here is your personal server");
     disp("server close");
     fclose(tcpipServer);
-    end
-    
     NoveltyOddball();
+    
+    
+    
 end 
     
 
