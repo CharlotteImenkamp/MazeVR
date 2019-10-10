@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1743903104223250, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_LocalPosition.x
@@ -820,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_TagString
@@ -1414,6 +1414,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &904860923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904860919}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a115722effc1a4595698273016782b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &904860926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2,
@@ -2483,10 +2495,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motionTarget: {fileID: 904860926}
-  effectColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+  effectColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.6431373}
   effectCoverage: 1
-  effectFeather: 0
-  effectSkybox: {fileID: 0}
+  effectFeather: 0.049
+  effectSkybox: {fileID: 8900000, guid: 53ec25ecc46b49f4ab3bc22a92f95802, type: 3}
   applyColorToBackground: 0
   useAngularVelocity: 1
   angularVelocityStrength: 0
@@ -2499,10 +2511,10 @@ MonoBehaviour:
   accelerationMax: 0
   accelerationSmoothing: 0.15
   useVelocity: 1
-  velocityStrength: 0
+  velocityStrength: 1.509
   velocityMin: 0
-  velocityMax: 0
-  velocitySmoothing: 0.15
+  velocityMax: 2
+  velocitySmoothing: 0.3
   motionEffectTarget: {fileID: 0}
   useCounterMotion: 0
   counterRotationStrength: 1
@@ -2514,7 +2526,7 @@ MonoBehaviour:
   framerateDivision: 1
   divideTranslation: 1
   divideRotation: 1
-  backgroundMode: 0
+  backgroundMode: 1
   effectOverlay: 0
   _cageParent: {fileID: 0}
   cageDownsample: 0
