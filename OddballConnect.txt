@@ -1,8 +1,0 @@
-InvokeRepeating
- - repeates a method every x seconds
-
-OnMasterServerEvent
- - called on clients or serers when reporting events from the masterserver
-
-OnServerInitialized
- - called on the server whenever a network.initializeServer was invoked and has completed
