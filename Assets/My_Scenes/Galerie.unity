@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_TagString
@@ -882,14 +882,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1151426347}
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1062232533}
+    - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1151426347}
     - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -909,6 +909,10 @@ PrefabInstance:
     - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013889601590, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
@@ -1216,6 +1220,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2792335006695028004, guid: aaa40fa36beec9c4887dda67b768870e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1797320207823330429, guid: aaa40fa36beec9c4887dda67b768870e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1326,6 +1335,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 500478174}
+    - target: {fileID: 8249350119729338244, guid: aaa40fa36beec9c4887dda67b768870e,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa40fa36beec9c4887dda67b768870e, type: 3}
 --- !u!224 &846716283 stripped
@@ -1674,7 +1688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938508391}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2f511c1adaa1e94ebe7ca97bbcabd17, type: 3}
   m_Name: 
@@ -1683,13 +1697,14 @@ MonoBehaviour:
   interactWithUI:
     actionPath: /actions/default/in/InteractUI
     needsReinit: 0
-  active: 1
+  active: 0
   color: {r: 0, g: 0, b: 0, a: 0}
-  thickness: 0.002
-  clickColor: {r: 0, g: 1, b: 0, a: 1}
+  thickness: 0.001
+  dist: 100
+  clickColor: {r: 0.16237983, g: 0.8396226, b: 0.8330593, a: 0.6862745}
   holder: {fileID: 0}
   pointer: {fileID: 0}
-  addRigidBody: 0
+  addRigidBody: 1
   reference: {fileID: 0}
 --- !u!1 &1056316734
 GameObject:
@@ -2251,7 +2266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4625514048514850, guid: e3d34be79692ce4468812aa97bacfbdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.714
       objectReference: {fileID: 0}
     - target: {fileID: 4625514048514850, guid: e3d34be79692ce4468812aa97bacfbdf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2306,7 +2321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1221736300
 Transform:
   m_ObjectHideFlags: 0
@@ -3385,7 +3400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2105685351
 Transform:
   m_ObjectHideFlags: 0

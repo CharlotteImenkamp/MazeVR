@@ -17,40 +17,49 @@ public class LaserInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //sends out a raycast and returns an array filled with everything it hit
-        // distance: 100 adapt if neccessary
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, transform.forward, 100.0f);
+        RaycastHit hit;
 
-        //Goes through all the hit objects and checks if any of them were our button 
-        for (int i= 0; i< hits.Length; i++)
+        if (Physics.Raycast(transform.position, transform.forward, 100.0f))
         {
-            RaycastHit hit = hits[i];
 
-            //use the object id to determine if code already ran for this object
-            int id = hit.collider.gameObject.GetInstanceID();
-
-            // If not, run it again
-            if (currentID != id)
+            if (hit.collider.name == GameConstants.CHARACTER_ID)
             {
-                currentID = id;
-                currentObject = hit.collider.gameObject;
-
-                ////checks based of the name----add name here !!!!!!!
-                //string name = currentObject.name; 
-                //if(name == "...")
-                //{
-                //    Debut.Log("name found");
-                //}
-
-                // checks based of the tag  
-                string tag = currentObject.tag; 
-                if (tag == "GoldBall")
-                {
-                    Debug.Log("tag found");
-                }
+                return true;
             }
         }
-        
+
+
+
+        ////sends out a raycast and returns an array filled with everything it hit
+        //// distance: 100 adapt if neccessary
+        //RaycastHit[] hits;
+        //hits = Physics.RaycastAll(transform.position, transform.forward, 100.0f);
+
+        ////Goes through all the hit objects and checks if any of them were our button 
+        //for (int i= 0; i< hits.Length; i++)
+        //{
+        //    RaycastHit hit = hits[i];
+
+        //    //use the object id to determine if code already ran for this object
+        //    int id = hit.collider.gameObject.GetInstanceID();
+
+        //    // If not, run it again
+        //    if (currentID != id)
+        //    {
+        //        currentID = id;
+        //        currentObject = hit.collider.gameObject;
+
+        //        // checks based of the tag  
+        //        string tag = currentObject.tag; 
+        //        if (tag == "GoldBall")
+        //        {
+        //            Debug.Log("tag found");
+        //        }
+        //    }
+        //}
+
     }
 }
+
+
+

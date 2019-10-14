@@ -14,6 +14,7 @@ namespace Valve.VR.Extras
         public bool active = true;
         public Color color;
         public float thickness = 0.002f;
+        public float dist = 10f;
         public Color clickColor = Color.green;
         public GameObject holder;
         public GameObject pointer;
@@ -24,19 +25,20 @@ namespace Valve.VR.Extras
         public event PointerEventHandler PointerOut;
         public event PointerEventHandler PointerClick;
 
+
         Transform previousContact = null;
 
 
         private void Start()
         {
+            // Debug
             if (pose == null)
                 pose = this.GetComponent<SteamVR_Behaviour_Pose>();
             if (pose == null)
                 Debug.LogError("No SteamVR_Behaviour_Pose component found on this object");
-            
             if (interactWithUI == null)
                 Debug.LogError("No ui interaction action has been set on this component.");
-            
+
 
             holder = new GameObject();
             holder.transform.parent = this.transform;
@@ -45,7 +47,7 @@ namespace Valve.VR.Extras
 
             pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
             pointer.transform.parent = holder.transform;
-            pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
+            pointer.transform.localScale = new Vector3(thickness, thickness, 3f);
             pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
             pointer.transform.localRotation = Quaternion.identity;
             BoxCollider collider = pointer.GetComponent<BoxCollider>();
@@ -65,6 +67,7 @@ namespace Valve.VR.Extras
                     Object.Destroy(collider);
                 }
             }
+
             Material newMaterial = new Material(Shader.Find("Unlit/Color"));
             newMaterial.SetColor("_Color", color);
             pointer.GetComponent<MeshRenderer>().material = newMaterial;
@@ -88,16 +91,17 @@ namespace Valve.VR.Extras
                 PointerOut(this, e);
         }
 
-        
+
         private void Update()
         {
-            if (!isActive)
+   
+                if (!isActive)
             {
                 isActive = true;
                 this.transform.GetChild(0).gameObject.SetActive(true);
             }
 
-            float dist = 100f;
+            
 
             Ray raycast = new Ray(transform.position, transform.forward);
             RaycastHit hit;
@@ -154,6 +158,7 @@ namespace Valve.VR.Extras
             }
             pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
         }
+    
     }
 
     public struct PointerEventArgs
