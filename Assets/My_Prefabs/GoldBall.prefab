@@ -88,7 +88,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8962001334020609355}
   - component: {fileID: 3338845200730972282}
-  - component: {fileID: 4426963691410371320}
   m_Layer: 9
   m_Name: GoldBall
   m_TagString: GoldBall
@@ -125,18 +124,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4426963691410371320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4084268214395246954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b1514d6d4be9154488c04348b934e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5757022606192440529
 GameObject:
   m_ObjectHideFlags: 0
