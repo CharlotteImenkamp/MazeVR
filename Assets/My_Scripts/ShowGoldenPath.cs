@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI; //NavMesh
 
 
@@ -14,9 +12,10 @@ public class ShowGoldenPath : MonoBehaviour
 
     void Start()
     {
-        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+        LineRenderer lineRenderer = new LineRenderer();
         lineRenderer.widthMultiplier = 0.1f;
-        lineRenderer.SetColors(Color.white, Color.white);
+        lineRenderer.startColor = Color.white;
+        lineRenderer.endColor = Color.white; 
 
         path = new NavMeshPath();
         agent = GetComponent<NavMeshAgent>();
@@ -36,9 +35,10 @@ public class ShowGoldenPath : MonoBehaviour
             elapsed -= 1.0f;
             NavMesh.CalculatePath(transform.position, GameObject.Find("GoldBall1").transform.position, NavMesh.AllAreas, path);
             lineRenderer.positionCount = path.corners.Length;
+            print(path.corners.Length);
         }
 
-        for (int j = 0; j < path.corners.Length  ; j++)
+        for (int j = 0; j < path.corners.Length; j++)
         {
             lineRenderer.SetPosition(j, path.corners[j]);
             print(j);
