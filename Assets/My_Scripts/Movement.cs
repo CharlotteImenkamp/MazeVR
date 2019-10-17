@@ -7,11 +7,7 @@ public class Movement : MonoBehaviour
     public Vector2 trackpad;
     public Vector3 moveDirection = new Vector3(0, 0, 0);
     public int speed = 1;
-
-
-
-
-
+    
     //public SteamVR_Input_Sources Hand;//Set Hand To Get Input From
     //public float speed;
     public GameObject Head;
