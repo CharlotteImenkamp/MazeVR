@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI; //NavMesh
 
 
-public class ShowGoldenPath : MonoBehaviour
+public class klj: MonoBehaviour
 {
     public NavMeshPath path;
     private float elapsed = 0.0f;
