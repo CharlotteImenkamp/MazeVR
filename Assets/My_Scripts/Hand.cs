@@ -9,8 +9,9 @@ public class Hand : MonoBehaviour
     private SteamVR_Behaviour_Pose m_Pose = null;
     private FixedJoint m_Joint = null;
     private Interactable m_currentBall = null;
-    public List<Interactable> m_contactBall = null; 
-    
+    public List<Interactable> m_contactBall = null;
+   
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         // down
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
@@ -69,10 +70,10 @@ public class Hand : MonoBehaviour
 
         //Attatch to fixed joint
         Rigidbody targedbody = m_currentBall.GetComponent<Rigidbody>();
-        m_Joint.connectedBody = targedbody; 
+        m_Joint.connectedBody = targedbody;
 
         //set active hand ? 
-       
+
 
     }
 
@@ -89,7 +90,7 @@ public class Hand : MonoBehaviour
         Destroy(m_currentBall);
 
         //clear
-        m_currentBall = null; 
+        m_currentBall = null;
 
     }
 
@@ -97,18 +98,18 @@ public class Hand : MonoBehaviour
     {
         Interactable nearest = null;
         float minDistance = float.MaxValue;
-        float distance = 0.0f; 
+        float distance = 0.0f;
 
-        foreach(Interactable ball in m_contactBall)
+        foreach (Interactable ball in m_contactBall)
         {
             distance = (ball.transform.position - transform.position).sqrMagnitude;
 
-            if(distance < minDistance)
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 nearest = ball;
             }
         }
-        return nearest; 
+        return nearest;
     }
 }

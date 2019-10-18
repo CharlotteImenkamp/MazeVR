@@ -17,9 +17,9 @@ public class Handtest : MonoBehaviour
     //public List<Interactable> m_contactBall = null;       
 
     // GameObject new
-    private GameObject m_currentObj = null; 
+    private GameObject m_currentObj = null;
 
-   //Awake
+    //Awake
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
@@ -59,7 +59,7 @@ public class Handtest : MonoBehaviour
         if (!other.gameObject.CompareTag("GoldBall"))
             return;
 
-        m_currentObj = null; 
+        m_currentObj = null;
         //m_contactBall.Remove(other.gameObject.GetComponent<Interactable>());
     }
 
@@ -76,7 +76,7 @@ public class Handtest : MonoBehaviour
 
         //Position
         //m_currentBall.transform.position = transform.position;
-        m_currentObj.transform.position = transform.position; 
+        m_currentObj.transform.position = transform.position;
 
         //Attatch to fixed joint
         Rigidbody targedbody = m_currentObj.GetComponent<Rigidbody>(); //vorher: currentBall
