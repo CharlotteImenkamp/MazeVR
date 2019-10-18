@@ -24,15 +24,7 @@ public class NoveltyOddballClient : MonoBehaviour
     {
         setupClient();
         Debug.Log("Client is set up");
-
         closeSocket();
-
-        
-    }
-
-// Update
-    void Update()
-    {
     }
 
     public void setupClient()
@@ -74,9 +66,6 @@ public class NoveltyOddballClient : MonoBehaviour
         myClient.Close();
         ClientReady = false;
     }
-
-
-
 
 }
 

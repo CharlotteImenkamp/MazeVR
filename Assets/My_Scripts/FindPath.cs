@@ -27,11 +27,12 @@ public class FindPath : MonoBehaviour
 
         // Line Renderer
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.2f;
+        lineRenderer.startWidth = 0.5f;
         lineRenderer.endWidth = 0.01f;
-        lineRenderer.startColor = Color.white;
-        lineRenderer.endColor = Color.white;
-        lineRenderer.material = new Material(Shader.Find("Particles/Standard Surface"));
+        lineRenderer.startColor = Color.blue;
+        lineRenderer.endColor = Color.blue;
+        lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+  
 
         // Generate Path
         path = new NavMeshPath();
@@ -70,59 +71,21 @@ public class FindPath : MonoBehaviour
 
         // Set Positions
         ballPos = GameObject.Find(currentBall.name).transform.position;
-        playPos = GameObject.Find("FirstPerson-AIO").transform.position;
-
+       playPos = GameObject.Find("FirstPerson-AIO").transform.position;
         // Update the way to the target every 0.5 second.
         elapsed += Time.deltaTime;
         if (elapsed > 0.5f)
         {
             elapsed -= 0.5f;
             NavMesh.CalculatePath(playPos, ballPos, NavMesh.AllAreas, path);
-
-            print("Path Corners:" + path.corners.Length);
             lineRenderer.positionCount = path.corners.Length;
         }
         for (int j = 0; j < path.corners.Length; j++)
         {
+
             lineRenderer.SetPosition(j, path.corners[j]);
         }
     }
-
-    //private GameObject GetNextBall()
-    //{
-    //    Interactable nearest = null;
-    //    float minDistance = float.MaxValue;
-    //    float distance = 0.0f;
-
-    //    foreach (Interactable ball in m_contactBall)
-    //    {
-    //        distance = (ball.transform.position - transform.position).sqrMagnitude;
-
-    //        if (distance < minDistance)
-    //        {
-    //            minDistance = distance;
-    //            nearest = ball;
-    //        }
-    //    }
-    //    return nearest;
-    //}
-
-
-    //public string SelectBall()
-    //{
-    //    //int i = 0;
-    //    //if (collision.activeSelf)
-    //    //{
-    //    //    i = i + 1;
-    //    //    print("isactive");
-    //    //    currentBall = ballsVect[i].name;
-    //    //    print(ballsVect[i].name);
-
-    //    //    collision.SetActive(false);
-    //    //}
-
-    //    return "dummieball";
-    //}
 
 
 
