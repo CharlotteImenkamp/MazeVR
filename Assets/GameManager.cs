@@ -16,11 +16,7 @@ public class GameManager : MonoBehaviour
 
     // register active player
 
-    public GameObject startMenu;
-    public GameObject count1Menu;
-    public GameObject count2Menu;
-    public GameObject count3Menu;
-    public GameObject sliderMenu;
+    public GameObject menu;
 
 
 
@@ -34,34 +30,33 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
+    //}
 
-    public void Reset()
-    {
-        // set default values
-        t_block = 120;
+    //public void Reset()
+    //{
 
-        //set maps inactive
-        for (int i = 0; i < mapList.Count; i++)
-        {
-            mapList[i].SetActive(false); 
-        }
-
-        startMenu = GameObject.Find("StartMenu");
-        sliderMenu = GameObject.Find("SliderMenu");
-        count1Menu = GameObject.Find("1");
-        count2Menu = GameObject.Find("2");
-        count3Menu = GameObject.Find("3");
-
-        startMenu.SetActive(false);
-        sliderMenu.SetActive(false);
-        count1Menu.SetActive(false);
-        count2Menu.SetActive(false);
-        count3Menu.SetActive(false);
     }
 
     public void Start()
     {
+        // set default values
+        t_block = 120;
+
+        // set menu
+
+        menu = GameObject.Find("Menu");
+
+
+        //set maps inactive
+        foreach (GameObject map in mapList)
+        {
+            map.SetActive(false);
+        }
+
+        //set menu inactive
+        menu.SetActive(false);
+
+
 
 
         // Berechne reihenfolge der labys und aufgaben. Pseudorandomisiert
@@ -75,7 +70,7 @@ public class GameManager : MonoBehaviour
         // countdown stop
         // abfrage
 
-        //mapList[0].SetActive(true);
+        mapList[0].SetActive(true);
     }
 
     public void RegisterMap(GameObject map)
