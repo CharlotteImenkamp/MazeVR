@@ -16,6 +16,8 @@ public class FindPath : MonoBehaviour
     public Vector3 pathOffset = new Vector3();
 
     public string player;
+
+    public string name; 
   
     void Start()
     {
@@ -34,8 +36,8 @@ public class FindPath : MonoBehaviour
         elapsed = 0.0f;
 
         // set player
-        // player = "FirstPerson-AIO";
-        player = "[CameraRig]";
+        player = "FirstPerson-AIO";
+        //player = "[CameraRig]";
     }
 
     void Update()
@@ -46,7 +48,14 @@ public class FindPath : MonoBehaviour
             if (elapsed > updateIntervall)
             {
                 elapsed = 0.0f;
-                path = FindNearestPath();
+                name = FindNearestObj();
+
+            NavMesh.CalculatePath(
+                GameObject.Find(player).transform.position,      // Player pos
+                GameObject.Find(name).transform.position,       // Current Ball pos
+                NavMesh.AllAreas,
+                path
+            );
 
             for (int i = 0; i < path.corners.Length; i++)
                 {
@@ -58,12 +67,12 @@ public class FindPath : MonoBehaviour
         
     }
 
-    public NavMeshPath FindNearestPath()
+    private string FindNearestObj()
     {
         float pathlength = 0.0f;
         float minpath = 100000.0f;
-        NavMeshPath dummiepath = new NavMeshPath();
-        int i = 0; 
+   
+
         foreach (GameObject obj in GManager.Instance.BallList)
         {
             pathlength = 0.0f;
@@ -71,28 +80,25 @@ public class FindPath : MonoBehaviour
             // calculate Path
             NavMesh.CalculatePath(
                 GameObject.Find(player).transform.position,      // Player pos
-                GameObject.Find(obj.name).transform.position,               // Current Ball pos
+                GameObject.Find(obj.name).transform.position,    // Current Ball pos
                 NavMesh.AllAreas,
-                dummiepath
+                path
             );
 
             // calculate Path length 
-            for (int j = 0; j < dummiepath.corners.Length - 1; j++)
+            for (int j = 0; j < path.corners.Length - 1; j++)
             {
-                pathlength = pathlength + Vector3.Distance(dummiepath.corners[j], dummiepath.corners[j + 1]);
+                pathlength = pathlength + Vector3.Distance(path.corners[j], path.corners[j + 1]);
             }
             
             // set minpath to smallest path length
             if (pathlength < minpath)
             {
                 minpath = pathlength;
-                path = dummiepath;
+                name = obj.name;
             }
-
         }
-
-        print("shortestpath: " + path.corners.Length);
-        return path; 
+        return name; 
     }
 
 

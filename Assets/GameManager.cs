@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         // countdown stop
         // abfrage
 
-        mapList[0].SetActive(true);
+        //mapList[0].SetActive(true);
     }
 
     public void RegisterMap(GameObject map)
