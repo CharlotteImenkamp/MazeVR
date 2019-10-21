@@ -15,12 +15,8 @@ public class FindPath : MonoBehaviour
 
     public Vector3 pathOffset = new Vector3();
 
-    public int i; 
-
-    //public GameObject closest;
-    //public GameObject collision;
-
-
+    public string player;
+  
     void Start()
     {
 
@@ -28,14 +24,18 @@ public class FindPath : MonoBehaviour
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         //lineRenderer.startWidth = 0.5f;
         //lineRenderer.endWidth = 0.01f;
-        lineRenderer.startColor = Color.blue;
-        lineRenderer.endColor = Color.blue;
-        lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+        //lineRenderer.startColor = Color.blue;
+        //lineRenderer.endColor = Color.blue;
+        //lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
   
 
         // Generate Path
         path = new NavMeshPath();
         elapsed = 0.0f;
+
+        // set player
+        // player = "FirstPerson-AIO";
+        player = "[CameraRig]";
     }
 
     void Update()
@@ -70,7 +70,7 @@ public class FindPath : MonoBehaviour
 
             // calculate Path
             NavMesh.CalculatePath(
-                GameObject.Find("FirstPerson-AIO").transform.position,      // Player pos
+                GameObject.Find(player).transform.position,      // Player pos
                 GameObject.Find(obj.name).transform.position,               // Current Ball pos
                 NavMesh.AllAreas,
                 dummiepath

@@ -29,6 +29,8 @@ public class Handtest : MonoBehaviour
     //Updata
     void Update()
     {
+
+
         //Trigger Down
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
@@ -61,7 +63,10 @@ public class Handtest : MonoBehaviour
 
         m_currentObj = null;
         //m_contactBall.Remove(other.gameObject.GetComponent<Interactable>());
+        
     }
+
+
 
     public void Pickup()
     {
@@ -69,7 +74,7 @@ public class Handtest : MonoBehaviour
         //m_currentBall = GetNearestInteractable();
 
         //Nullcheck
-        if (!m_currentObj)  //vorher: m_currentBall
+        if (!m_currentObj)
         {
             return;
         }
@@ -78,12 +83,15 @@ public class Handtest : MonoBehaviour
         //m_currentBall.transform.position = transform.position;
         m_currentObj.transform.position = transform.position;
 
-        //Attatch to fixed joint
-        Rigidbody targedbody = m_currentObj.GetComponent<Rigidbody>(); //vorher: currentBall
-        m_Joint.connectedBody = targedbody;
+        //Attach to fixed joint
+        //Rigidbody targedbody = m_currentObj.GetComponent<Rigidbody>(); //vorher: currentBall
+        //m_Joint.connectedBody = targedbody;
+
+        m_currentObj.transform.SetParent(transform);
+
     }
 
-    public void Drop()  //new: alles was obj war zu ball
+    public void Drop()
     {
         //Null check
         if (!m_currentObj)
@@ -97,23 +105,4 @@ public class Handtest : MonoBehaviour
         //clear
         m_currentObj = null;
     }
-
-    //private Interactable GetNearestInteractable()
-    //{
-    //    Interactable nearest = null;
-    //    float minDistance = float.MaxValue;
-    //    float distance = 0.0f;
-
-    //    foreach (Interactable ball in m_contactBall)
-    //    {
-    //        distance = (ball.transform.position - transform.position).sqrMagnitude;
-
-    //        if (distance < minDistance)
-    //        {
-    //            minDistance = distance;
-    //            nearest = ball;
-    //        }
-    //    }
-    //    return nearest;
-    //}
 }

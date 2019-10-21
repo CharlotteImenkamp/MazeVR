@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegisterBall : MonoBehaviour
+public class RegisterMap : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        GManager.Instance.RegisterBall(gameObject); 
+        GameManager.Instance.RegisterMap(gameObject);
     }
+
 }
