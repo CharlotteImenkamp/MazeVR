@@ -17,19 +17,13 @@ public class FindPath : MonoBehaviour
 
     public string player;
 
-    public string name; 
+    public string nextObj; 
   
     void Start()
     {
 
         // Line Renderer
         lineRenderer = gameObject.GetComponent<LineRenderer>();
-        //lineRenderer.startWidth = 0.5f;
-        //lineRenderer.endWidth = 0.01f;
-        //lineRenderer.startColor = Color.blue;
-        //lineRenderer.endColor = Color.blue;
-        //lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
-  
 
         // Generate Path
         path = new NavMeshPath();
@@ -37,6 +31,7 @@ public class FindPath : MonoBehaviour
 
         // set player
         player = "FirstPerson-AIO";
+        player = "Cubii";
         //player = "[CameraRig]";
     }
 
@@ -48,22 +43,25 @@ public class FindPath : MonoBehaviour
             if (elapsed > updateIntervall)
             {
                 elapsed = 0.0f;
-                name = FindNearestObj();
+                nextObj = FindNearestObj();
 
-            NavMesh.CalculatePath(
-                GameObject.Find(player).transform.position,      // Player pos
-                GameObject.Find(name).transform.position,       // Current Ball pos
-                NavMesh.AllAreas,
-                path
-            );
+                NavMesh.CalculatePath(
+                    GameObject.Find(player).transform.position,      // Player pos
+                    GameObject.Find(nextObj).transform.position,       // Current Ball pos
+                    NavMesh.AllAreas,
+                    path
+                );
 
-            for (int i = 0; i < path.corners.Length; i++)
+                for (int i = 0; i < path.corners.Length; i++)
                 {
                     path.corners[i] += pathOffset;
                 }
+                print(path.corners.Length); 
+
                 lineRenderer.positionCount = path.corners.Length;
                 lineRenderer.SetPositions(path.corners);
             }
+        
         
     }
 
@@ -84,6 +82,7 @@ public class FindPath : MonoBehaviour
                 NavMesh.AllAreas,
                 path
             );
+            print(obj.name + " :" + obj.transform.position);
 
             // calculate Path length 
             for (int j = 0; j < path.corners.Length - 1; j++)
@@ -95,10 +94,12 @@ public class FindPath : MonoBehaviour
             if (pathlength < minpath)
             {
                 minpath = pathlength;
-                name = obj.name;
+                nextObj = obj.name;
             }
         }
-        return name; 
+
+        
+        return nextObj; 
     }
 
 

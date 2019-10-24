@@ -7,7 +7,7 @@ public class RegisterMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.RegisterMap(gameObject);
+        //GameManager.Instance.RegisterMap(gameObject);
     }
 
 }
