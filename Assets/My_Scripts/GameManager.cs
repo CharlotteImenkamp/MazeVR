@@ -14,13 +14,13 @@ public class GameManager : MonoBehaviour
 
     GameObject test; 
 
-    public float t_block = 5000f;         // ms
-    public float t_left = 0f;             // ms
+    public float t_block = 10f;         // s
+    public float t_left = 0f;             // s
 
     // Lists
     public List<GameObject> mapList;
     int[] mapOrder = new int[] { 0, 1, 0, 1,0,1,0,1,0,1,0,1,0,1 };
-    int currentListIdx = 0; 
+    public int currentListIdx = 0; 
 
     private void Awake()
     {
