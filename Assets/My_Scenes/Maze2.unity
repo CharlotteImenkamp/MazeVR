@@ -6018,7 +6018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1658324743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6031,7 +6031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5689ab66710b084da5c5e438fab793e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1963125489}
   t_block: 0
   t_left: 0
   currentListIdx: 0
@@ -6654,7 +6653,7 @@ MonoBehaviour:
   updateIntervall: 0
   pathOffset: {x: 0, y: 0.8, z: 0}
   player: FirstPerson-AIO
-  name: 
+  nextObj: 
 --- !u!1 &1860756794
 GameObject:
   m_ObjectHideFlags: 0

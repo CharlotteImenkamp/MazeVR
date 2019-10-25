@@ -31,7 +31,7 @@ public class FindPath : MonoBehaviour
 
         // set player
         player = "FirstPerson-AIO";
-        player = "Cubii";
+        //player = "player";
         //player = "[CameraRig]";
     }
 
