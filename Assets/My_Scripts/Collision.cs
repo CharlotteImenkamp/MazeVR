@@ -9,7 +9,7 @@ public class Collision : MonoBehaviour
     {
         if (other.CompareTag("GoldBall"))
         {
-            GManager.Instance.RemoveBall(other.gameObject);
+            BallManager.Instance.RemoveBall(other.gameObject);
         }
     }
 }

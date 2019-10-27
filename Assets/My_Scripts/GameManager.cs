@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("SliderMenu");
             menuflag = true;
-
         }
     }
 

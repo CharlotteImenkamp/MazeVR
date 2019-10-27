@@ -61,24 +61,23 @@ public class FindPath : MonoBehaviour
                 lineRenderer.positionCount = path.corners.Length;
                 lineRenderer.SetPositions(path.corners);
             }
-        
-        
     }
 
     private string FindNearestObj()
     {
         float pathlength = 0.0f;
-        float minpath = 100000.0f;
+        float minpath = - 1f;
    
+        //hier player finden
 
-        foreach (GameObject obj in GManager.Instance.BallList)
+        foreach (GameObject obj in BallManager.Instance.BallList)
         {
             pathlength = 0.0f;
 
             // calculate Path
             NavMesh.CalculatePath(
                 GameObject.Find(player).transform.position,      // Player pos
-                GameObject.Find(obj.name).transform.position,    // Current Ball pos
+                obj.transform.position,                         // Current Ball pos
                 NavMesh.AllAreas,
                 path
             );
@@ -87,18 +86,19 @@ public class FindPath : MonoBehaviour
             // calculate Path length 
             for (int j = 0; j < path.corners.Length - 1; j++)
             {
-                pathlength = pathlength + Vector3.Distance(path.corners[j], path.corners[j + 1]);
+                pathlength = pathlength + Vector2.Distance(new Vector2(path.corners[j].x, path.corners[j].z), new Vector2(path.corners[j+1].x, path.corners[j+1].z));
+                print(path.corners[j].x + path.corners[j].z);
+                print(path.corners[j]);
             }
             
             // set minpath to smallest path length
-            if (pathlength < minpath)
+            if (pathlength < minpath || minpath < 0)
             {
                 minpath = pathlength;
                 nextObj = obj.name;
             }
         }
 
-        
         return nextObj; 
     }
 
