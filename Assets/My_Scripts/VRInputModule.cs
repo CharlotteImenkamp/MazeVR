@@ -41,11 +41,15 @@ public class VRInputModule : BaseInputModule
         m_Data.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
         m_CurrentObject = m_Data.pointerCurrentRaycast.gameObject;
 
+        Debug.Log("Process: CurrentObject " + m_CurrentObject.name); 
+
         // Clear Raycast
         m_RaycastResultCache.Clear();
 
         // handle hover states
         HandlePointerExitAndEnter(m_Data, m_CurrentObject);
+
+        Debug.Log("Process nach handle pointer: " + m_Data); 
 
         // press
         if (m_ClickAction.GetStateDown(m_TargetSouce))

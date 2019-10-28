@@ -17,11 +17,16 @@ public class GameManager : MonoBehaviour
     // all maps
     MapConfig[] maps = new MapConfig[] {
         new MapConfig(1, true), //0
-        new MapConfig(1, false) //1
+        new MapConfig(1, false), //1
+        new MapConfig(2, true), //2
+        new MapConfig(2, false), //3
+        new MapConfig(3, true), //4
+        new MapConfig(3, false) //5
+
     };
 
     // Lists
-    int[] mapOrder = new int[] { 1, 0, 1, 0, 1, 0, 1 };
+    int[] mapOrder = new int[] { 0, 1, 2, 3, 4 , 5, 6 };
     public int currentListIdx = 0;
 
     // Awake Singelton
@@ -51,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //t_left -= Time.deltaTime;
+        t_left -= Time.deltaTime;
 
         // abhilfe für notVRstuff. Nur drücken, wenn start button vorhanden
         if (Input.GetKeyDown("space"))

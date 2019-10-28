@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Valve.VR;
 
 public class Pointer : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class Pointer : MonoBehaviour
     {
         // Use default or distance
         // float targetLength = m_DefaultLength; 
-        PointerEventData data = m_InputModule.GetData();
+        PointerEventData data; 
+        data = m_InputModule.GetData();
         float targetLength = data.pointerCurrentRaycast.distance == 0 ? m_DefaultLength : data.pointerCurrentRaycast.distance;
 
         // Raycast
