@@ -19,7 +19,7 @@ public class CollectBall : MonoBehaviour
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
-        m_Joint = GetComponent<FixedJoint>();
+        //m_Joint = GetComponent<FixedJoint>();
     }
 
     //Updata
@@ -45,7 +45,9 @@ public class CollectBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("GoldBall"))
+        {
             return;
+        }
 
         m_currentObj = other.gameObject;
         //m_contactBall.Add(other.gameObject.GetComponent<Interactable>());
@@ -55,13 +57,12 @@ public class CollectBall : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.gameObject.CompareTag("GoldBall"))
+        {
             return;
+        }
 
         m_currentObj = null;
-        //m_contactBall.Remove(other.gameObject.GetComponent<Interactable>());
-        
     }
-
 
 
     public void Pickup()
@@ -76,13 +77,7 @@ public class CollectBall : MonoBehaviour
         }
 
         //Position
-        //m_currentBall.transform.position = transform.position;
         m_currentObj.transform.position = transform.position;
-
-        //Attach to fixed joint
-        //Rigidbody targedbody = m_currentObj.GetComponent<Rigidbody>(); //vorher: currentBall
-        //m_Joint.connectedBody = targedbody;
-
         m_currentObj.transform.SetParent(transform);
 
     }

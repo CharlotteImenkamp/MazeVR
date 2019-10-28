@@ -21,7 +21,7 @@ public class VRInputModule : BaseInputModule
     public SteamVR_Action_Boolean m_ClickAction;
 
     private GameObject m_CurrentObject = null;
-    private PointerEventData m_Data = null;
+    public PointerEventData m_Data = null;
 
     protected override void Awake()
     {
@@ -29,7 +29,16 @@ public class VRInputModule : BaseInputModule
 
         m_Data = new PointerEventData(eventSystem);
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            print("KeyDown");
+            PointerEventData hh = GetData();
+            print(hh);
+            print("dfsefsefsef");
+        }
+    }
     public override void Process()
     {
         // Reset data, set camera
@@ -41,15 +50,11 @@ public class VRInputModule : BaseInputModule
         m_Data.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
         m_CurrentObject = m_Data.pointerCurrentRaycast.gameObject;
 
-        Debug.Log("Process: CurrentObject " + m_CurrentObject.name); 
-
         // Clear Raycast
         m_RaycastResultCache.Clear();
 
         // handle hover states
         HandlePointerExitAndEnter(m_Data, m_CurrentObject);
-
-        Debug.Log("Process nach handle pointer: " + m_Data); 
 
         // press
         if (m_ClickAction.GetStateDown(m_TargetSouce))
@@ -62,6 +67,8 @@ public class VRInputModule : BaseInputModule
         {
             ProcessRelease(m_Data);
         }
+        
+        Debug.Log("Process nach if: " + m_Data);
     }
 
     public PointerEventData GetData()

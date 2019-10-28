@@ -24,6 +24,8 @@ public class FindPath : MonoBehaviour
         // Line Renderer
         lineRenderer = gameObject.GetComponent<LineRenderer>();
 
+        player = "[CameraRig]";
+
         // Generate Path
         path = new NavMeshPath();
         elapsed = 0.0f;
