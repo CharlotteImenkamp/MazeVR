@@ -21,18 +21,12 @@ public class FindPath : MonoBehaviour
   
     void Start()
     {
-
         // Line Renderer
         lineRenderer = gameObject.GetComponent<LineRenderer>();
 
         // Generate Path
         path = new NavMeshPath();
         elapsed = 0.0f;
-
-        // set player
-        player = "FirstPerson-AIO";
-        //player = "player";
-        //player = "[CameraRig]";
     }
 
     void Update()
@@ -67,8 +61,10 @@ public class FindPath : MonoBehaviour
     {
         float pathlength = 0.0f;
         float minpath = - 1f;
-   
+
         //hier player finden
+
+        Transform start = GameObject.Find(player).transform;
 
         foreach (GameObject obj in BallManager.Instance.BallList)
         {
@@ -76,19 +72,16 @@ public class FindPath : MonoBehaviour
 
             // calculate Path
             NavMesh.CalculatePath(
-                GameObject.Find(player).transform.position,      // Player pos
-                obj.transform.position,                         // Current Ball pos
+                start.position,                 // Player pos
+                obj.transform.position,        // Current Ball pos
                 NavMesh.AllAreas,
                 path
             );
-            print(obj.name + " :" + obj.transform.position);
 
             // calculate Path length 
             for (int j = 0; j < path.corners.Length - 1; j++)
             {
                 pathlength = pathlength + Vector2.Distance(new Vector2(path.corners[j].x, path.corners[j].z), new Vector2(path.corners[j+1].x, path.corners[j+1].z));
-                print(path.corners[j].x + path.corners[j].z);
-                print(path.corners[j]);
             }
             
             // set minpath to smallest path length
@@ -101,12 +94,5 @@ public class FindPath : MonoBehaviour
 
         return nextObj; 
     }
-
-
-
-
-
-
-
 }
 
