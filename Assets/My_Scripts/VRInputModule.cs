@@ -28,8 +28,6 @@ public class VRInputModule : BaseInputModule
         base.Awake();
 
         m_Data = new PointerEventData(eventSystem);
-
-
     }
 
     public override void Process()
@@ -64,6 +62,7 @@ public class VRInputModule : BaseInputModule
 
     public PointerEventData GetData()
     {
+        Debug.Log("getdata: " + m_Data);
         return m_Data;
     }
 
@@ -86,6 +85,7 @@ public class VRInputModule : BaseInputModule
         data.pointerPress = newPointerPress;
         data.rawPointerPress = m_CurrentObject;
 
+        Debug.Log("Processpress: " +  data); 
 
     }
     private void ProcessRelease(PointerEventData data)
@@ -110,6 +110,8 @@ public class VRInputModule : BaseInputModule
         data.pressPosition = Vector2.zero;
         data.pointerPress = null;
         data.rawPointerPress = null;
+
+        Debug.Log("Processrelease: " + data);
     }
 }
 

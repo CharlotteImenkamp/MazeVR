@@ -13,7 +13,7 @@ public class Pointer : MonoBehaviour
 
     private void Awake()
     {
-
+        m_LineRenderer = GetComponent<LineRenderer>(); 
     }
 
 
@@ -25,6 +25,7 @@ public class Pointer : MonoBehaviour
     private void UpdateLine()
     {
         // Use default or distance
+        // float targetLength = m_DefaultLength; 
         PointerEventData data = m_InputModule.GetData();
         float targetLength = data.pointerCurrentRaycast.distance == 0 ? m_DefaultLength : data.pointerCurrentRaycast.distance;
 
