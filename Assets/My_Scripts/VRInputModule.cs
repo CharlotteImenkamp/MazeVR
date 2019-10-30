@@ -16,6 +16,12 @@ using Valve.VR;
 
 public class VRInputModule : BaseInputModule
 {
+    // test1
+    public static VRInputModule Instance { get;}
+
+    //test2
+    public PointerEventData m_test = null;
+
     public Camera m_Camera;
     public SteamVR_Input_Sources m_TargetSouce;
     public SteamVR_Action_Boolean m_ClickAction;
@@ -39,6 +45,7 @@ public class VRInputModule : BaseInputModule
             print("dfsefsefsef");
         }
     }
+
     public override void Process()
     {
         // Reset data, set camera
@@ -74,7 +81,10 @@ public class VRInputModule : BaseInputModule
     public PointerEventData GetData()
     {
         Debug.Log("getdata: " + m_Data);
-        return m_Data;
+        //return m_Data;
+
+        //test2
+        return m_test; 
     }
 
     private void ProcessPress(PointerEventData data)
