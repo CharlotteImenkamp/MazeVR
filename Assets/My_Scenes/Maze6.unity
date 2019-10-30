@@ -659,6 +659,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544968107}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &650868446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 729836748725741531, guid: eb88e5c8b75c135468ab01b2c576843e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051838150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &650868448
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650868446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &650868449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650868446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3e74251597aac4185220a4fdb6f8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GrabAction:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
 --- !u!1001 &811132192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -833,17 +867,17 @@ PrefabInstance:
     - target: {fileID: 729836748820850248, guid: eb88e5c8b75c135468ab01b2c576843e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.2
+      value: -30.1
       objectReference: {fileID: 0}
     - target: {fileID: 729836748820850248, guid: eb88e5c8b75c135468ab01b2c576843e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 729836748820850248, guid: eb88e5c8b75c135468ab01b2c576843e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.9
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 729836748820850248, guid: eb88e5c8b75c135468ab01b2c576843e,
         type: 3}
@@ -884,6 +918,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 729836748725748562, guid: eb88e5c8b75c135468ab01b2c576843e,
+        type: 3}
+      propertyPath: MovementHand
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 729836748591622885, guid: eb88e5c8b75c135468ab01b2c576843e,
         type: 3}
