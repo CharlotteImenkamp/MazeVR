@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GoldBall
   - collision
+  - Button
   layers:
   - Default
   - TransparentFX

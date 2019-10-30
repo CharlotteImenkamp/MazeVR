@@ -27,8 +27,9 @@ public class Pointer : MonoBehaviour
     {
         // Use default or distance
         float targetLength = m_DefaultLength;
+
         //test
-        PointerEventData data = VRInputModule.Instance.m_Data; 
+        //PointerEventData data = VRInputModule.Instance.m_Data; 
 
         //PointerEventData data = m_InputModule.GetData();
         //Debug.Log(data); 
