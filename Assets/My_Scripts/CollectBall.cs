@@ -81,7 +81,7 @@ public class CollectBall : MonoBehaviour
         }
 
         //destroy object
-        //**************count list
+        //Game Manager BallList +1 ***
         Destroy(m_currentObj);
 
         //clear

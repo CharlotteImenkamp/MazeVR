@@ -12,6 +12,8 @@ public class LaserInput : MonoBehaviour
     public SteamVR_Input_Sources m_TargetSouce;
     public SteamVR_Action_Boolean m_ClickAction;
 
+    //neu current button immersion***
+    // neu current button sickness***
 
     void Start()
     {
@@ -30,8 +32,24 @@ public class LaserInput : MonoBehaviour
         {
             for (int i = 0; i < hits.Length; i++)
             {
-                if (hits[i].collider.gameObject.name == "StartButton")
+
+                if(hits[i].collider.gameObject.tag == "ButtonImmersion")
                 {
+                    // Wenn currentImmButton = empty Färbe den Button ein***
+                    
+                    // Wenn currenImmbutton != empty färbe Button ein und reset anderen Button und setze currentbutton neu ***
+                }
+
+                if (hits[i].collider.gameObject.tag == "Sickness")
+                {
+                    // Wenn currentSickButton = empty Färbe den Button ein***
+
+                    // Wenn currentSickbutton != empty färbe Button ein und reset anderen Button und setze currentbutton neu ***
+                }
+
+                if (hits[i].collider.gameObject.name == "StartButton") //und currentSickbutton !=empty && currentImmButton != empty***
+                {
+                    //Sende Buttoninhalte an GameManager***
                     GameManager.Instance.StartLevel();
                 }
             }

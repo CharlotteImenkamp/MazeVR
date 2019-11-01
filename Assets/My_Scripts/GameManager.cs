@@ -14,7 +14,12 @@ public class GameManager : MonoBehaviour
     public float t_block;
     public float t_left;
 
-    // all maps
+    //Aufzeichnungen
+    //Array Bälle eingesammelt pro Level ***
+    // Array SicknessWert pro Level ***
+    // Array ImmersionWert pro Level ***
+
+    // all maps *** brauche ich das noch? ***
     MapConfig[] maps = new MapConfig[] {
         new MapConfig(1, true), //0
         new MapConfig(1, false), //1
@@ -22,11 +27,10 @@ public class GameManager : MonoBehaviour
         new MapConfig(2, false), //3
         new MapConfig(3, true), //4
         new MapConfig(3, false) //5
-
     };
 
     // Lists
-    int[] mapOrder = new int[] { 0, 1, 2, 3, 4 , 5, 6 };
+    int[] mapOrder = new int[] { 0, 1, 2, 3, 4 , 5, 6 }; // mache pseudoran ***
     public int currentListIdx = 0;
 
     // Awake Singelton
@@ -50,6 +54,9 @@ public class GameManager : MonoBehaviour
         t_block = 10f;          // s
         t_left = t_block;
         menuflag = true;
+
+        //Pseudoran
+        // Liste auf Pseudoranfkt***
 
         SceneManager.LoadScene("StartMenu");
     }
@@ -103,6 +110,8 @@ public class GameManager : MonoBehaviour
         //go on
         currentListIdx++;
     }
+
+    //Methode Pseudorandom ***
 
 }
 
