@@ -9,9 +9,6 @@ public class CollectBall : MonoBehaviour
     public SteamVR_Action_Boolean m_GrabAction = null;
     private SteamVR_Behaviour_Pose m_Pose = null;
 
-    //Grab Behaviour
-    private FixedJoint m_Joint = null; 
-
     // GameObject new
     private GameObject m_currentObj = null;
 
@@ -19,14 +16,11 @@ public class CollectBall : MonoBehaviour
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
-        //m_Joint = GetComponent<FixedJoint>();
     }
 
     //Updata
     void Update()
     {
-
-
         //Trigger Down
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
@@ -50,7 +44,6 @@ public class CollectBall : MonoBehaviour
         }
 
         m_currentObj = other.gameObject;
-        //m_contactBall.Add(other.gameObject.GetComponent<Interactable>());
     }
 
     //Remove from List
@@ -67,9 +60,6 @@ public class CollectBall : MonoBehaviour
 
     public void Pickup()
     {
-        //get nearest Interactable
-        //m_currentBall = GetNearestInteractable();
-
         //Nullcheck
         if (!m_currentObj)
         {
@@ -77,7 +67,7 @@ public class CollectBall : MonoBehaviour
         }
 
         //Position
-        m_currentObj.transform.position = transform.position;
+        m_currentObj.transform.position = transform.position; //*****************try if it works without this
         m_currentObj.transform.SetParent(transform);
 
     }
@@ -91,6 +81,7 @@ public class CollectBall : MonoBehaviour
         }
 
         //destroy object
+        //**************count list
         Destroy(m_currentObj);
 
         //clear
