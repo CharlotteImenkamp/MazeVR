@@ -80,8 +80,8 @@ public class CollectBall : MonoBehaviour
             return;
         }
 
-        //destroy object
-        //Game Manager BallList +1 ***
+        //destroy object and count to list
+        GameManager.Instance.ballsValue[GameManager.Instance.currentListIdx] += 1; 
         Destroy(m_currentObj);
 
         //clear

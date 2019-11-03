@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     public float t_left;
 
     //Aufzeichnungen
-    //Array Bälle eingesammelt pro Level ***
-    // Array SicknessWert pro Level ***
-    // Array ImmersionWert pro Level ***
+    public int[] ballsValue; 
+    public int[] sicknessValue;
+    public int[] immersionValue; 
 
     // all maps *** brauche ich das noch? ***
     MapConfig[] maps = new MapConfig[] {
@@ -79,6 +79,9 @@ public class GameManager : MonoBehaviour
             menuflag = true;
 
         }
+
+        //wenn currentListIdx == AnzBlöcke -1 ***
+        //dann speicher anz. bälle, sickness und immersion value und spieler id! ***
     }
 
 

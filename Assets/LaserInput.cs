@@ -1,25 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.UIElements;
+using UnityEngine.UI; 
 using UnityEngine.EventSystems;
 using Valve.VR;
 
 public class LaserInput : MonoBehaviour
 {
-    public static GameObject currentObject;
-    int currentID;
-    string currentName;
     public SteamVR_Input_Sources m_TargetSouce;
     public SteamVR_Action_Boolean m_ClickAction;
 
-    //neu current button immersion***
-    // neu current button sickness***
+    public GameObject currButtSick;
+    public GameObject currButtImm;
+    public GameObject currObj;
+
+    public int currentListIdx; 
 
     void Start()
     {
-        currentObject = null;
-        currentID = 0;
-        currentName = ""; 
+        currButtSick = null;
+        currButtImm = null;
+        currObj = null;
+        currentListIdx = GameManager.Instance.currentListIdx; 
     }
 
     void Update()
@@ -27,30 +30,64 @@ public class LaserInput : MonoBehaviour
         RaycastHit[] hits;
         hits = Physics.RaycastAll(transform.position, transform.forward, 100.0f);
 
-        //press
+        // Aktiviere Laser
         if (m_ClickAction.GetStateDown(m_TargetSouce))
         {
+            // Durchsuche HitList
             for (int i = 0; i < hits.Length; i++)
             {
+                // Setze aktuelles Objekt  
+                currObj = hits[i].collider.gameObject;
 
-                if(hits[i].collider.gameObject.tag == "ButtonImmersion")
+                switch (currObj.tag)
                 {
-                    // Wenn currentImmButton = empty Färbe den Button ein***
-                    
-                    // Wenn currenImmbutton != empty färbe Button ein und reset anderen Button und setze currentbutton neu ***
-                }
+                    case "ButtonImmersion":
+                        // Setze alten Button zurück
+                        if (currButtImm != null)
+                        {
+                            currButtImm.GetComponent<Image>().color = Color.white;
+                        }
 
-                if (hits[i].collider.gameObject.tag == "Sickness")
-                {
-                    // Wenn currentSickButton = empty Färbe den Button ein***
+                        // Aktualisiere Button 
+                        currButtImm = currObj.gameObject;
 
-                    // Wenn currentSickbutton != empty färbe Button ein und reset anderen Button und setze currentbutton neu ***
-                }
+                        // Aktiviere Button
+                        currButtImm.GetComponent<Image>().color = new Color(145f, 145f, 145f);
+                        break;
 
-                if (hits[i].collider.gameObject.name == "StartButton") //und currentSickbutton !=empty && currentImmButton != empty***
-                {
-                    //Sende Buttoninhalte an GameManager***
-                    GameManager.Instance.StartLevel();
+                    case "ButtonSickness":
+                        // Setze alten Button zurück
+                        if (currButtSick != null)
+                        {
+                            currButtSick.GetComponent<Image>().color = Color.white;
+                        }
+
+                        // Aktualisiere Button 
+                        currButtSick = currObj.gameObject;
+
+                        // Aktiviere Button
+                        currButtSick.GetComponent<Image>().color = new Color(145f, 145f, 145f);
+                        break;
+
+                    case "StartButton":
+                        if (currButtSick != null && currButtImm != null)
+                        {
+                            // Sende Buttoninhalte an GameManager
+                            GameManager.Instance.sicknessValue[currentListIdx]
+                                = int.Parse(currButtSick.GetComponentInChildren<Text>().text);
+                            GameManager.Instance.immersionValue[currentListIdx]
+                                = int.Parse(currButtImm.GetComponentInChildren<Text>().text);
+
+                            // Start Level
+                            GameManager.Instance.StartLevel();
+                        }
+                        else if (currentListIdx == 0)
+                        {
+                            // Start Level
+                            GameManager.Instance.StartLevel();
+                        }
+                        break; 
+
                 }
             }
         }
