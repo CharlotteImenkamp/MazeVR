@@ -380,7 +380,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   speed: 1
   Head: {fileID: 730545375545423729}
-  AxisHand: {fileID: 729836748725678825}
+  AxisHand: {fileID: 729836748725644797}
   Deadzone: 0
   NoFrictionMaterial: {fileID: 13400000, guid: 5b53aeabfa6ff544fa3e6b450195a10c, type: 2}
   MovementHand: 2
@@ -701,6 +701,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+--- !u!1 &729836748725741531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 124034, guid: 4d293c8e162f3874b982baadd71153d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 729836748725748569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &729836748725644797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 159396, guid: 4d293c8e162f3874b982baadd71153d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 729836748725748569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730545375545423729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000014254142504, guid: 4d293c8e162f3874b982baadd71153d2,
@@ -716,24 +728,6 @@ GameObject:
 --- !u!4 &729836748725907317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 729836748725748569}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &729836748725741531 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 124034, guid: 4d293c8e162f3874b982baadd71153d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 729836748725748569}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &729836748725644797 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 159396, guid: 4d293c8e162f3874b982baadd71153d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 729836748725748569}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &729836748725678825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 192944, guid: 4d293c8e162f3874b982baadd71153d2,
     type: 3}
   m_PrefabInstance: {fileID: 729836748725748569}
   m_PrefabAsset: {fileID: 0}

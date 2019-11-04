@@ -5,11 +5,14 @@ using UnityEngine;
 public class MapConfig
 {
     public int scene_index;
-    public bool path_active; 
+    public bool ballsref1;
+    public bool ballsref2; 
+    
 
-    public MapConfig(int scene_index, bool path_active)
+    public MapConfig(int scene_index, bool ballsref1, bool ballsref2)
     {
         this.scene_index = scene_index;
-        this.path_active = path_active; 
+        this.ballsref1 = ballsref1;
+        this.ballsref2 = ballsref2; 
     }
 }
