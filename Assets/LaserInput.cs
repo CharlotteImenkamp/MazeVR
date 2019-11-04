@@ -15,14 +15,27 @@ public class LaserInput : MonoBehaviour
     public GameObject currButtImm;
     public GameObject currObj;
 
+    ColorBlock cbw;
+    ColorBlock cbr;
+
     public int currentListIdx; 
 
     void Start()
     {
+        cbw = new ColorBlock();
+        cbw.normalColor = Color.white;
+        cbw.colorMultiplier = 1; 
+
+        cbr = new ColorBlock();
+        cbr.normalColor = Color.red;
+        cbr.colorMultiplier = 1; 
+
         currButtSick = null;
         currButtImm = null;
         currObj = null;
-        currentListIdx = GameManager.Instance.currentListIdx; 
+        currentListIdx = GameManager.Instance.currentListIdx;
+        
+        // change button color to sth nicer ***
     }
 
     void Update()
@@ -45,38 +58,37 @@ public class LaserInput : MonoBehaviour
                         // Setze alten Button zurück
                         if (currButtImm != null)
                         {
-                            currButtImm.GetComponent<Image>().color = Color.white;
+                            currButtImm.GetComponent<Button>().colors = cbw;
                         }
 
                         // Aktualisiere Button 
                         currButtImm = currObj.gameObject;
 
                         // Aktiviere Button
-                        currButtImm.GetComponent<Image>().color = new Color(145f, 145f, 145f);
+                        currButtImm.GetComponent<Button>().colors = cbr;
                         break;
 
                     case "ButtonSickness":
                         // Setze alten Button zurück
                         if (currButtSick != null)
                         {
-                            currButtSick.GetComponent<Image>().color = Color.white;
+                            currButtSick.GetComponent<Button>().colors = cbw; ;
                         }
 
                         // Aktualisiere Button 
                         currButtSick = currObj.gameObject;
 
                         // Aktiviere Button
-                        currButtSick.GetComponent<Image>().color = new Color(145f, 145f, 145f);
+                        currButtSick.GetComponent<Button>().colors = cbr;
                         break;
 
                     case "StartButton":
                         if (currButtSick != null && currButtImm != null)
                         {
                             // Sende Buttoninhalte an GameManager
-                            GameManager.Instance.sicknessValue[currentListIdx]
-                                = int.Parse(currButtSick.GetComponentInChildren<Text>().text);
-                            GameManager.Instance.immersionValue[currentListIdx]
-                                = int.Parse(currButtImm.GetComponentInChildren<Text>().text);
+                            GameManager.Instance.sicknessValue.Add(int.Parse(currButtSick.name));
+
+                            GameManager.Instance.immersionValue.Add(int.Parse(currButtImm.name));
 
                             // Start Level
                             GameManager.Instance.StartLevel();

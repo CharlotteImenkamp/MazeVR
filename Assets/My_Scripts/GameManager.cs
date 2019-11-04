@@ -16,17 +16,21 @@ public class GameManager : MonoBehaviour
 
     //Aufzeichnungen
     public int[] ballsValue; 
-    public int[] sicknessValue;
-    public int[] immersionValue; 
+    public List<int> sicknessValue;
+    public List<int> immersionValue; 
 
     // all maps *** brauche ich das noch? ***
     MapConfig[] maps = new MapConfig[] {
-        new MapConfig(1, true), //0
-        new MapConfig(1, false), //1
+        new MapConfig(0, true), //0
+        new MapConfig(1, true), //1
+        //new MapConfig(1, false), //1
         new MapConfig(2, true), //2
-        new MapConfig(2, false), //3
-        new MapConfig(3, true), //4
-        new MapConfig(3, false) //5
+        //new MapConfig(2, false), //3
+        new MapConfig(3, true), //3
+        //new MapConfig(3, false) //5
+        new MapConfig(4, true), //4
+        new MapConfig(5, true), //5
+        new MapConfig(6, true), //6
     };
 
     // Lists
@@ -50,15 +54,19 @@ public class GameManager : MonoBehaviour
     // Start Find Objects, open StartMenu
     void Start()
     {
+        ballsValue = new int[mapOrder.Length];
+        sicknessValue = new List<int>();
+        immersionValue = new List<int>();
+
         // time
-        t_block = 10f;          // s
+        t_block = 60f;          // s
         t_left = t_block;
         menuflag = true;
 
         //Pseudoran
         // Liste auf Pseudoranfkt***
 
-        SceneManager.LoadScene("StartMenu");
+       SceneManager.LoadScene("StartMenu");
     }
 
     private void Update()

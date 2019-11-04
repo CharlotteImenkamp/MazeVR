@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
+//add rigigbody and colloder with trigger to object
+//add collider to hand
+
 public class CollectBall : MonoBehaviour
 {
     //Controller Input
@@ -12,10 +15,17 @@ public class CollectBall : MonoBehaviour
     // GameObject new
     private GameObject m_currentObj = null;
 
+    public int currListidx;
+
     //Awake
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
+    }
+
+    private void Start()
+    {
+        currListidx = GameManager.Instance.currentListIdx; 
     }
 
     //Updata
@@ -42,7 +52,6 @@ public class CollectBall : MonoBehaviour
         {
             return;
         }
-
         m_currentObj = other.gameObject;
     }
 
@@ -67,9 +76,7 @@ public class CollectBall : MonoBehaviour
         }
 
         //Position
-        m_currentObj.transform.position = transform.position; //*****************try if it works without this
         m_currentObj.transform.SetParent(transform);
-
     }
 
     public void Drop()
@@ -81,7 +88,7 @@ public class CollectBall : MonoBehaviour
         }
 
         //destroy object and count to list
-        GameManager.Instance.ballsValue[GameManager.Instance.currentListIdx] += 1; 
+        GameManager.Instance.ballsValue[currListidx] += 1; 
         Destroy(m_currentObj);
 
         //clear

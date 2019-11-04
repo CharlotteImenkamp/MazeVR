@@ -6,18 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/My_Scenes/StartMenu.unity
-    guid: b865785339f5b5a4481295d1d9800d13
+    path: Assets/My_Scenes/Maze0.unity
+    guid: 24d7880505ccbaa4a84d33f47d317eac
+  - enabled: 1
+    path: Assets/My_Scenes/Maze1.unity
+    guid: 1a71a75c830bc7f4c989acf2735374ea
+  - enabled: 1
+    path: Assets/My_Scenes/Maze2.unity
+    guid: 028ed8eb570b3d44692aaeaae9e0f035
   - enabled: 1
     path: Assets/My_Scenes/Maze3.unity
     guid: cd22aebf0b4c04449a0721c12ceacb75
   - enabled: 1
+    path: Assets/My_Scenes/Maze4.unity
+    guid: 80f76433203a4e041b673f1473f468ba
+  - enabled: 1
+    path: Assets/My_Scenes/Maze5.unity
+    guid: 52e474114095a6b428c7e2447e6102fc
+  - enabled: 1
     path: Assets/My_Scenes/Maze6.unity
     guid: fe85ad57d799af441bf097276ab854b4
   - enabled: 1
-    path: Assets/My_Scenes/Mazetest.unity
-    guid: 6b72e3c8c82c838439e1006fcbf376f9
-  - enabled: 1
     path: Assets/My_Scenes/SliderMenu.unity
     guid: 288992f7feb70d541bab76f4f702e7c1
+  - enabled: 1
+    path: Assets/My_Scenes/StartMenu.unity
+    guid: b865785339f5b5a4481295d1d9800d13
   m_configObjects: {}

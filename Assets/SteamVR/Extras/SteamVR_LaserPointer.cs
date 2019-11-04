@@ -68,7 +68,7 @@ namespace Valve.VR.Extras
                 }
             }
 
-            Material newMaterial = new Material(Shader.Find("Unlit/Color"));
+            Material newMaterial = new Material(Shader.Find("Unlit/Color")); //Unlit/Color
             newMaterial.SetColor("_Color", color);
             pointer.GetComponent<MeshRenderer>().material = newMaterial;
         }
