@@ -76,15 +76,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         menuflag = true;
-        print(maps.Length);
 
-        //Pseudorandomisation***
-        for (int i = 0; i < maps.Length; i++)
-        {
-            print(i);
-            mapOrder[i] = i;
-        }
-
+        mapOrder = new int[] { 0,1, 2, 3, 4, 5 ,6,7,8,9,10,11};
         //Aufzeichnung
         ballsValue = new int[mapOrder.Length];
         sicknessValue = new List<int>();
@@ -95,8 +88,7 @@ public class GameManager : MonoBehaviour
         t_left = t_block;
 
 
-
-        //mapOrder = Shuffle(mapOrder);
+        mapOrder = Shuffle(mapOrder);
 
         SceneManager.LoadScene("StartMenu");
     }
@@ -118,6 +110,13 @@ public class GameManager : MonoBehaviour
             menuflag = true;
         }
 
+        // beenden und werte speichern ***
+        //if(currentListIdx == mapOrder.Length)
+        //{
+        //    int[] array = ballsValue; 
+        //    public string ballsValueStr = string.Join(",", array.Select(p => p.ToString()).ToArray());
+        //    System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Bachelorarbeit", ballsValueStr);
+        //}
         //wenn currentListIdx == AnzBlöcke -1 ***
         //dann speicher anz. bälle, sickness und immersion value und spieler id! ***
     }
@@ -157,17 +156,51 @@ public class GameManager : MonoBehaviour
     //Methode Pseudorandom ***
     private int[] Shuffle(int[] newOrder)
     {
-        int temp; 
+        int temp;
+        bool swap = true;
+        int nswap = 0;
+        int stop = (newOrder.Length / 2);
 
-        for(int i=0; i < newOrder.Length; i++)
+        //shuffle
+        for (int i=0; i < newOrder.Length; i++)
         {
+            print("i" + i);
             int rnd = Random.Range(0, newOrder.Length);
 
             temp = newOrder[rnd];
             newOrder[rnd] = newOrder[i];
             newOrder[i] = temp; 
-        } 
-        return newOrder; 
+        }
+
+        //pseudorandom
+        while (swap == true && nswap < 5)
+        {
+            swap = false;
+
+            for (int j = 1; j < newOrder.Length - 2; j++)
+            {
+                //mittlerer vertauscht mit random
+                if (newOrder[j] < stop)
+                {
+                    if (newOrder[j - 1] < stop && newOrder[j + 1] < stop)
+                    {
+                        int rnd = Random.Range(0, newOrder.Length);
+
+                        temp = newOrder[j];
+                        newOrder[j] = newOrder[rnd];
+                        newOrder[rnd] = temp;
+                        swap = true;
+                    }
+                }
+            }
+            nswap += 1;
+
+            if (nswap == 5)
+            {
+                print("***Achtung, keine reihenfolge gefunden ***");
+            }  
+        }
+        return newOrder;
     }
 }
 
