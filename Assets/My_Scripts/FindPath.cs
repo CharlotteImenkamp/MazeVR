@@ -52,20 +52,16 @@ public class FindPath : MonoBehaviour
                 );
             }
             float pathlength = 0.0f;
-            print(currObj);
 
             for (int j = 0; j < path.corners.Length - 1; j++)
             {
                 pathlength = pathlength + Vector2.Distance(new Vector2(path.corners[j].x, path.corners[j].z), new Vector2(path.corners[j + 1].x, path.corners[j + 1].z));
             }
-            print(pathlength);
-            print(currObj);
 
             for (int i = 0; i < path.corners.Length; i++)
                 {
                     path.corners[i] += pathOffset;
                 }
-                print(path.corners.Length); 
 
                 lineRenderer.positionCount = path.corners.Length;
                 lineRenderer.SetPositions(path.corners);
@@ -111,11 +107,10 @@ public class FindPath : MonoBehaviour
                 //nextObj = obj.transform.parent.gameObject.name;
             }
 
-            //print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
+            print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
             l++;
         }
 
-        print(nextObj);
         return nextgObj; 
     }
 }

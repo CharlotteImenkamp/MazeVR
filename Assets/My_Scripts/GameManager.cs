@@ -12,10 +12,11 @@ public class GameManager : MonoBehaviour
 
     //menu
     bool menuflag;
+    public bool start_easyKond; 
 
     //time
     public float t_block;
-    public float t_left;
+    private float t_left;
 
     //Aufzeichnungen
     public int[] ballsValue; 
@@ -47,18 +48,23 @@ public class GameManager : MonoBehaviour
 
         currentListIdx = 0;
 
-        //Aufzeichnung
-        ballsValue = new int[mapOrder.Length];
-        sicknessValue = new List<int>();
-        immersionValue = new List<int>();
-
         // time
-        t_block = 2f;          // s
+        t_block = 10f;          // s
         t_left = t_block;
 
         // mapOrder
         mapOrder = new int[] { 0, 1, 2, 3, 4, 5 };
-        mapOrder = Shuffle(mapOrder);
+
+        // Nur wenn richtiges Experiment. Sonst egal.
+        if (mapOrder.Length == 6)
+        {
+            mapOrder = Shuffle(mapOrder);
+        }
+
+        //Aufzeichnung
+        ballsValue = new int[mapOrder.Length];
+        sicknessValue = new List<int>();
+        immersionValue = new List<int>();
 
         //Start
         SceneManager.LoadScene("StartMenu");
@@ -74,22 +80,13 @@ public class GameManager : MonoBehaviour
             StartLevelKey();
         }
 
-        
-
         // wenn Zeit rum, lade Menü und stoppe timer
         if (t_left <= 0 && menuflag == false)
         {
             SceneManager.LoadScene("SliderMenu");
-
-            //beenden und werte speichern
-
-
             menuflag = true;
         }
-
-
     }
-
 
     //StartButton clicked
     public void StartLevel()
@@ -116,53 +113,54 @@ public class GameManager : MonoBehaviour
         currentListIdx++;
     }
 
-    //Methode Pseudorandom****
+    //Methode Pseudorandom*******
     private int[] Shuffle(int[] newOrder)
     {
-        //immer abwechselnd 
-        int temp;
-        bool swap = true;
-        int nswap = 0;
-        int stop = (newOrder.Length / 2);
+
+        //immer abwechselnd
+        //int temp;
+        //bool swap = true;
+        //int nswap = 0;
+        //int stop = (newOrder.Length / 2);
 
         //shuffle
-        for (int i=0; i < newOrder.Length; i++)
-        {
-            int rnd = UnityEngine.Random.Range(0, newOrder.Length);
+        //for (int i = 0; i < newOrder.Length; i++)
+        //{
+        //    int rnd = UnityEngine.Random.Range(0, newOrder.Length);
 
-            temp = newOrder[rnd];
-            newOrder[rnd] = newOrder[i];
-            newOrder[i] = temp; 
-        }
+        //    temp = newOrder[rnd];
+        //    newOrder[rnd] = newOrder[i];
+        //    newOrder[i] = temp;
+        //}
 
         //pseudorandom
-        while (swap == true && nswap < 5)
-        {
-            swap = false;
+        //while (swap == true && nswap < 5)
+        //{
+        //    swap = false;
 
-            for (int j = 1; j < newOrder.Length - 2; j++)
-            {
-                //mittlerer vertauscht mit random
-                if (newOrder[j] < stop)
-                {
-                    if (newOrder[j - 1] < stop && newOrder[j + 1] < stop)
-                    {
-                        int rnd = UnityEngine.Random.Range(0, newOrder.Length);
+        //    for (int j = 1; j < newOrder.Length - 2; j++)
+        //    {
+        //        mittlerer vertauscht mit random
+        //        if (newOrder[j] < stop)
+        //        {
+        //            if (newOrder[j - 1] < stop && newOrder[j + 1] < stop)
+        //            {
+        //                int rnd = UnityEngine.Random.Range(0, newOrder.Length);
 
-                        temp = newOrder[j];
-                        newOrder[j] = newOrder[rnd];
-                        newOrder[rnd] = temp;
-                        swap = true;
-                    }
-                }
-            }
-            nswap += 1;
+        //                temp = newOrder[j];
+        //                newOrder[j] = newOrder[rnd];
+        //                newOrder[rnd] = temp;
+        //                swap = true;
+        //            }
+        //        }
+        //    }
+        //    nswap += 1;
 
-            if (nswap == 5)
-            {
-                print("***Achtung, keine reihenfolge gefunden ***");
-            }  
-        }
+        //    if (nswap == 5)
+        //    {
+        //        print("***Achtung, keine reihenfolge gefunden ***");
+        //    }
+        //}
         return newOrder;
     }
 
