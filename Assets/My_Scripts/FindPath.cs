@@ -18,7 +18,7 @@ public class FindPath : MonoBehaviour
     public string player;
 
     public string nextObj;
-    public string currObj; 
+    public GameObject currObj; 
   
     void Start()
     {
@@ -42,13 +42,15 @@ public class FindPath : MonoBehaviour
                 elapsed = 0.0f;
                 currObj = FindNearestObj();
                 print(currObj);
-
+            if (currObj)
+            {
                 NavMesh.CalculatePath(
                     GameObject.Find(player).transform.position,      // Player pos
-                    GameObject.Find(currObj).transform.position,       // Current Ball pos
+                    currObj.transform.position,       // Current Ball pos
                     NavMesh.AllAreas,
                     path
                 );
+            }
             float pathlength = 0.0f;
             print(currObj);
 
@@ -70,11 +72,11 @@ public class FindPath : MonoBehaviour
             }
     }
 
-    private string FindNearestObj()
+    private GameObject FindNearestObj()
     {
         float pathlength = 0.0f;
         float minpath = - 1f;
-        GameObject nextgObj; 
+        GameObject nextgObj = null; 
 
         //hier player finden
 
@@ -104,18 +106,17 @@ public class FindPath : MonoBehaviour
                 minpath = pathlength;
                 nextObj = obj.name;
                 
-                //nextgObj = obj;
+                nextgObj = obj;
                
-                nextObj = obj.transform.parent.gameObject.name;
+                //nextObj = obj.transform.parent.gameObject.name;
             }
 
-            print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
+            //print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
             l++;
         }
 
         print(nextObj);
-        return nextObj; 
-
+        return nextgObj; 
     }
 }
 

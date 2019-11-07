@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
     //Methode Pseudorandom****
     private int[] Shuffle(int[] newOrder)
     {
+        //immer abwechselnd 
         int temp;
         bool swap = true;
         int nswap = 0;
