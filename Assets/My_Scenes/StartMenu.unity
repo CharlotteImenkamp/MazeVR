@@ -340,13 +340,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5689ab66710b084da5c5e438fab793e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballsref1: 0
-  ballsref2: 0
+  SpielerID: 1
+  start_easyKond: 1
   t_block: 0
-  t_left: 0
   ballsValue: 
   sicknessValue: 
   immersionValue: 
+  mapOrder: 
+  newOrder: 
+  mapeasy: 
+  maphard: 
   currentListIdx: 0
 --- !u!4 &179312675
 Transform:

@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     // Lists
     public int[] mapOrder;
+    public int[] newOrder;
+    public int[] mapeasy;
+    public int[] maphard; 
     public int currentListIdx;
 
     // Awake Singelton
@@ -52,14 +55,14 @@ public class GameManager : MonoBehaviour
         t_block = 10f;          // s
         t_left = t_block;
 
-        // mapOrder
-        mapOrder = new int[] { 0, 1, 2, 3, 4, 5 };
+        // mapOrder + shuffle
+        start_easyKond = false; 
 
-        // Nur wenn richtiges Experiment. Sonst egal.
-        if (mapOrder.Length == 6)
-        {
-            mapOrder = Shuffle(mapOrder);
-        }
+        mapeasy = new int[] { 0, 1, 2 };
+        maphard = new int[] { 3, 4, 5 };
+        mapOrder = new int[mapeasy.Length + maphard.Length];
+        mapOrder = Shuffle();
+
 
         //Aufzeichnung
         ballsValue = new int[mapOrder.Length];
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour
 
         //Start
         SceneManager.LoadScene("StartMenu");
+        
     }
 
     private void Update()
@@ -113,54 +117,50 @@ public class GameManager : MonoBehaviour
         currentListIdx++;
     }
 
-    //Methode Pseudorandom*******
-    private int[] Shuffle(int[] newOrder)
+    //Methode Pseudorandom
+    public int[] Shuffle()
     {
+        newOrder = new int[mapeasy.Length + maphard.Length];
+        int temp;
+        int e = 0;
+        int h = 0;
 
-        //immer abwechselnd
-        //int temp;
-        //bool swap = true;
-        //int nswap = 0;
-        //int stop = (newOrder.Length / 2);
+        // Randomize easy
+        for (int i = 0; i < mapeasy.Length; i++)
+        {
+            int rnde = UnityEngine.Random.Range(0, mapeasy.Length);
 
-        //shuffle
-        //for (int i = 0; i < newOrder.Length; i++)
-        //{
-        //    int rnd = UnityEngine.Random.Range(0, newOrder.Length);
+            temp = mapeasy[rnde];
+            mapeasy[rnde] = mapeasy[i];
+            mapeasy[i] = temp;
+        }
 
-        //    temp = newOrder[rnd];
-        //    newOrder[rnd] = newOrder[i];
-        //    newOrder[i] = temp;
-        //}
+        // Randomize hard
+        for (int i = 0; i < mapeasy.Length; i++)
+        {
+            int rndh = UnityEngine.Random.Range(0, maphard.Length);
 
-        //pseudorandom
-        //while (swap == true && nswap < 5)
-        //{
-        //    swap = false;
+            temp = maphard[rndh];
+            maphard[rndh] = maphard[i];
+            maphard[i] = temp;
+        }
 
-        //    for (int j = 1; j < newOrder.Length - 2; j++)
-        //    {
-        //        mittlerer vertauscht mit random
-        //        if (newOrder[j] < stop)
-        //        {
-        //            if (newOrder[j - 1] < stop && newOrder[j + 1] < stop)
-        //            {
-        //                int rnd = UnityEngine.Random.Range(0, newOrder.Length);
+        for(int i=0; i<newOrder.Length; i++)
+        {
+            if (start_easyKond == true)
+            {
+                newOrder[i] = mapeasy[e];
+                e++;
+                start_easyKond = false; 
+            }
+            else if (start_easyKond == false)
+            {
+                newOrder[i] = maphard[h];
+                h++;
+                start_easyKond = true; 
+            }
+        }
 
-        //                temp = newOrder[j];
-        //                newOrder[j] = newOrder[rnd];
-        //                newOrder[rnd] = temp;
-        //                swap = true;
-        //            }
-        //        }
-        //    }
-        //    nswap += 1;
-
-        //    if (nswap == 5)
-        //    {
-        //        print("***Achtung, keine reihenfolge gefunden ***");
-        //    }
-        //}
         return newOrder;
     }
 
@@ -192,5 +192,3 @@ public class GameManager : MonoBehaviour
         System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Proband" + SpielerID + "_sickness.txt", temp);
     }
 }
-
-
