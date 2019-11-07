@@ -24,9 +24,6 @@ EditorBuildSettings:
     path: Assets/My_Scenes/Maze5.unity
     guid: 52e474114095a6b428c7e2447e6102fc
   - enabled: 1
-    path: Assets/My_Scenes/Maze6.unity
-    guid: fe85ad57d799af441bf097276ab854b4
-  - enabled: 1
     path: Assets/My_Scenes/StartMenu.unity
     guid: b865785339f5b5a4481295d1d9800d13
   - enabled: 1

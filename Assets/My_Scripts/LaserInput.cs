@@ -27,15 +27,14 @@ public class LaserInput : MonoBehaviour
         cbw.colorMultiplier = 1; 
 
         cbr = new ColorBlock();
-        cbr.normalColor = Color.red;
+        //*************changed without check ******************
+        cbr.normalColor = Color.grey;
         cbr.colorMultiplier = 1; 
 
         currButtSick = null;
         currButtImm = null;
         currObj = null;
         currentListIdx = GameManager.Instance.currentListIdx;
-        
-        // change button color to sth nicer ***
     }
 
     void Update()
@@ -89,6 +88,12 @@ public class LaserInput : MonoBehaviour
                             GameManager.Instance.sicknessValue.Add(int.Parse(currButtSick.name));
 
                             GameManager.Instance.immersionValue.Add(int.Parse(currButtImm.name));
+
+                            //***********check*************************
+                            if (currentListIdx == GameManager.Instance.mapOrder.Length)
+                            {
+                                GameManager.Instance.WriteTxt();
+                            }
 
                             // Start Level
                             GameManager.Instance.StartLevel();
