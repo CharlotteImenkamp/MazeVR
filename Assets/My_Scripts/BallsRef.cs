@@ -7,7 +7,7 @@ public class BallsRef2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.SetActive(GameManager.Instance.ballsref2);
+        //this.gameObject.SetActive(GameManager.Instance.ballsref2);
     }
 
 }

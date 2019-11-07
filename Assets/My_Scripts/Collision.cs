@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
+    public int currListidx; 
+    void Start()
+    {
+        currListidx = GameManager.Instance.currentListIdx; 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("GoldBall"))
+        if (other.CompareTag("GoldBallTable"))
         {
-            BallManager.Instance.RemoveBall(other.gameObject);
+            GameManager.Instance.ballsValue[currListidx] += 1;
+            BallManager.Instance.RemoveBall(other.gameObject.transform.GetChild(1).gameObject);
         }
     }
 }

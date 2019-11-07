@@ -17,14 +17,15 @@ public class FindPath : MonoBehaviour
 
     public string player;
 
-    public string nextObj; 
+    public string nextObj;
+    public string currObj; 
   
     void Start()
     {
         // Line Renderer
         lineRenderer = gameObject.GetComponent<LineRenderer>();
 
-        player = "[CameraRig]";
+        player = "FirstPerson-AIO";
 
         // Generate Path
         path = new NavMeshPath();
@@ -39,16 +40,26 @@ public class FindPath : MonoBehaviour
             if (elapsed > updateIntervall)
             {
                 elapsed = 0.0f;
-                nextObj = FindNearestObj();
+                currObj = FindNearestObj();
+                print(currObj);
 
                 NavMesh.CalculatePath(
                     GameObject.Find(player).transform.position,      // Player pos
-                    GameObject.Find(nextObj).transform.position,       // Current Ball pos
+                    GameObject.Find(currObj).transform.position,       // Current Ball pos
                     NavMesh.AllAreas,
                     path
                 );
+            float pathlength = 0.0f;
+            print(currObj);
 
-                for (int i = 0; i < path.corners.Length; i++)
+            for (int j = 0; j < path.corners.Length - 1; j++)
+            {
+                pathlength = pathlength + Vector2.Distance(new Vector2(path.corners[j].x, path.corners[j].z), new Vector2(path.corners[j + 1].x, path.corners[j + 1].z));
+            }
+            print(pathlength);
+            print(currObj);
+
+            for (int i = 0; i < path.corners.Length; i++)
                 {
                     path.corners[i] += pathOffset;
                 }
@@ -63,11 +74,12 @@ public class FindPath : MonoBehaviour
     {
         float pathlength = 0.0f;
         float minpath = - 1f;
+        GameObject nextgObj; 
 
         //hier player finden
 
         Transform start = GameObject.Find(player).transform;
-
+        int l = 0; 
         foreach (GameObject obj in BallManager.Instance.BallList)
         {
             pathlength = 0.0f;
@@ -91,10 +103,19 @@ public class FindPath : MonoBehaviour
             {
                 minpath = pathlength;
                 nextObj = obj.name;
+                
+                //nextgObj = obj;
+               
+                nextObj = obj.transform.parent.gameObject.name;
             }
+
+            print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
+            l++;
         }
 
+        print(nextObj);
         return nextObj; 
+
     }
 }
 

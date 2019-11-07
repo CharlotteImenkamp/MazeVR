@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System; 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,9 @@ public class GameManager : MonoBehaviour
 
     //Bälle
     public bool ballsref1;
-    public bool ballsref2; 
+    public bool ballsref2;
+
+    public string SpielerID = "1";
 
     //menu
     bool menuflag;
@@ -111,14 +114,10 @@ public class GameManager : MonoBehaviour
         }
 
         // beenden und werte speichern ***
-        //if(currentListIdx == mapOrder.Length)
-        //{
-        //    int[] array = ballsValue; 
-        //    public string ballsValueStr = string.Join(",", array.Select(p => p.ToString()).ToArray());
-        //    System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Bachelorarbeit", ballsValueStr);
-        //}
-        //wenn currentListIdx == AnzBlöcke -1 ***
-        //dann speicher anz. bälle, sickness und immersion value und spieler id! ***
+        if(currentListIdx == mapOrder.Length-1)
+        {
+            WriteTxt();
+        }
     }
 
 
@@ -153,7 +152,7 @@ public class GameManager : MonoBehaviour
         currentListIdx++;
     }
 
-    //Methode Pseudorandom ***
+    //Methode Pseudorandom
     private int[] Shuffle(int[] newOrder)
     {
         int temp;
@@ -165,7 +164,7 @@ public class GameManager : MonoBehaviour
         for (int i=0; i < newOrder.Length; i++)
         {
             print("i" + i);
-            int rnd = Random.Range(0, newOrder.Length);
+            int rnd = UnityEngine.Random.Range(0, newOrder.Length);
 
             temp = newOrder[rnd];
             newOrder[rnd] = newOrder[i];
@@ -184,7 +183,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (newOrder[j - 1] < stop && newOrder[j + 1] < stop)
                     {
-                        int rnd = Random.Range(0, newOrder.Length);
+                        int rnd = UnityEngine.Random.Range(0, newOrder.Length);
 
                         temp = newOrder[j];
                         newOrder[j] = newOrder[rnd];
@@ -201,6 +200,33 @@ public class GameManager : MonoBehaviour
             }  
         }
         return newOrder;
+    }
+
+    private void WriteTxt()
+    {
+        string [] ballsValueStr = new string[ballsValue.Length];
+        string[] immersionValueStr = new string[ballsValue.Length];
+        string[] sicknessValueStr = new string[ballsValue.Length];
+        string temp; 
+     
+        for (int i = 0; i < ballsValue.Length; i++)
+        {
+            ballsValueStr[i] = ballsValue[i].ToString();
+            sicknessValueStr[i] = sicknessValue[i].ToString();
+            immersionValueStr[i] = immersionValue[i].ToString();
+        }
+
+        //ballsValue
+        temp = String.Join(",", ballsValueStr);
+        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Proband" + SpielerID + "_balls.txt", temp);
+
+        //immersionValue
+        temp = String.Join(",", immersionValueStr);
+        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Proband" + SpielerID + "_immersion.txt", temp);
+
+        //sickness
+        temp = String.Join(",", sicknessValueStr);
+        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Proband" + SpielerID + "_sickness.txt", temp);
     }
 }
 
