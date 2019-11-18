@@ -1,5 +1,4 @@
 ﻿using System; 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,12 +17,11 @@ public class GameManager : MonoBehaviour
     public float t_block;
     private float t_left;
 
-    //Aufzeichnungen
+    //lists
     public int[] ballsValue; 
     public List<int> sicknessValue;
     public List<int> immersionValue;
 
-    // Lists
     public int[] mapOrder;
     public int[] newOrder;
     public int[] mapeasy;
@@ -117,7 +115,7 @@ public class GameManager : MonoBehaviour
         currentListIdx++;
     }
 
-    //Methode Pseudorandom
+    //method pseudorandom
     public int[] Shuffle()
     {
         newOrder = new int[mapeasy.Length + maphard.Length];
@@ -164,7 +162,7 @@ public class GameManager : MonoBehaviour
         return newOrder;
     }
 
-    //funktioniert in Testscene
+   //write in txt file
   public void WriteTxt()
     {
         string [] ballsValueStr = new string[ballsValue.Length];

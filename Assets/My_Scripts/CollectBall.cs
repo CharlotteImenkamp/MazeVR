@@ -12,9 +12,7 @@ public class CollectBall : MonoBehaviour
     public SteamVR_Action_Boolean m_GrabAction = null;
     private SteamVR_Behaviour_Pose m_Pose = null;
 
-    // GameObject new
     private GameObject m_currentObj = null;
-
     public int currListidx;
 
     //Awake
@@ -28,7 +26,7 @@ public class CollectBall : MonoBehaviour
         currListidx = GameManager.Instance.currentListIdx; 
     }
 
-    //Updata
+    //Update
     void Update()
     {
         //Trigger Down

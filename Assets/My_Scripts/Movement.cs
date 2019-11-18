@@ -2,48 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+
+
 public class Movement : MonoBehaviour
 {
     public Vector2 trackpad;
     public Vector3 moveDirection = new Vector3(0, 0, 0);
     public int speed = 1;
 
-    //public SteamVR_Input_Sources Hand;//Set Hand To Get Input From
-    //public float speed;
     public GameObject Head;
-    // public CapsuleCollider Collider;
-    public GameObject AxisHand;//Hand Controller GameObject
-    public float Deadzone;//the Deadzone of the trackpad. used to prevent unwanted walking.
-                          // Start is called before the first frame update
-
-
+    public GameObject AxisHand;     //Hand Controller GameObject
+    public float Deadzone;          //the Deadzone of the trackpad
 
     private CapsuleCollider CapCollider;
     public PhysicMaterial NoFrictionMaterial;
-    public SteamVR_Input_Sources MovementHand;//Set Hand To Get Input From
+    public SteamVR_Input_Sources MovementHand;      //Set Hand To Get Input From
     private Rigidbody rb;
+
+
     private void Start()
     {
         CapCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
     }
 
-
     void Update()
     {
         updateInput();
         updateCollider();
+
         //get the angle of the touch and correct it for the rotation of the controller 
         moveDirection = Quaternion.AngleAxis(Angle(trackpad) + AxisHand.transform.localRotation.eulerAngles.y, Vector3.up) * Vector3.forward * speed;
 
         rb.velocity = new Vector3(0, 0, 0);
         if (trackpad.magnitude > Deadzone && trackpad.x + trackpad.y != 0)
-        {//make sure the touch isn't in the deadzone and we aren't going to fast or zero
+        {
+            //make sure the touch isn't in the deadzone and we aren't going to fast or zero
             CapCollider.material = NoFrictionMaterial;
             rb.velocity = moveDirection;
-
         }
     }
+
     public static float Angle(Vector2 p_vector2)
     {
         if (p_vector2.x < 0)

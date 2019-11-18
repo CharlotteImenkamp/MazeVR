@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-//using UnityEngine.UIElements;
+﻿using UnityEngine;
 using UnityEngine.UI; 
-using UnityEngine.EventSystems;
 using Valve.VR;
 
 public class LaserInput : MonoBehaviour
@@ -27,7 +23,6 @@ public class LaserInput : MonoBehaviour
         cbw.colorMultiplier = 1; 
 
         cbr = new ColorBlock();
-        //*************changed without check ******************
         cbr.normalColor = Color.grey;
         cbr.colorMultiplier = 1; 
 
@@ -42,49 +37,49 @@ public class LaserInput : MonoBehaviour
         RaycastHit[] hits;
         hits = Physics.RaycastAll(transform.position, transform.forward, 100.0f);
 
-        // Aktiviere Laser
+        // activete laser
         if (m_ClickAction.GetStateDown(m_TargetSouce))
         {
-            // Durchsuche HitList
+            // search in hitList
             for (int i = 0; i < hits.Length; i++)
             {
-                // Setze aktuelles Objekt  
+                // set current Object 
                 currObj = hits[i].collider.gameObject;
 
                 switch (currObj.tag)
                 {
                     case "ButtonImmersion":
-                        // Setze alten Button zurück
+                        //reset old button
                         if (currButtImm != null)
                         {
                             currButtImm.GetComponent<Button>().colors = cbw;
                         }
 
-                        // Aktualisiere Button 
+                        // refresh button
                         currButtImm = currObj.gameObject;
 
-                        // Aktiviere Button
+                        // activate button
                         currButtImm.GetComponent<Button>().colors = cbr;
                         break;
 
                     case "ButtonSickness":
-                        // Setze alten Button zurück
+                        // reset old button 
                         if (currButtSick != null)
                         {
                             currButtSick.GetComponent<Button>().colors = cbw; ;
                         }
 
-                        // Aktualisiere Button 
+                        // refresh button 
                         currButtSick = currObj.gameObject;
 
-                        // Aktiviere Button
+                        // activate button
                         currButtSick.GetComponent<Button>().colors = cbr;
                         break;
 
                     case "StartButton":
                         if (currButtSick != null && currButtImm != null)
                         {
-                            // Sende Buttoninhalte an GameManager
+                            // sent button content to GameManager
                             GameManager.Instance.sicknessValue.Add(int.Parse(currButtSick.name));
 
                             GameManager.Instance.immersionValue.Add(int.Parse(currButtImm.name));

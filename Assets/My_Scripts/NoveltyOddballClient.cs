@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Net;
+﻿using UnityEngine;
 using System.Net.Sockets;
 using System;
 using System.IO;
@@ -15,7 +12,7 @@ public class NoveltyOddballClient : MonoBehaviour
     NetworkStream theStream;
     StreamWriter theWriter;
     StreamReader theReader;
-    String Host = "127.0.0.1";  //vorher: "localhost"
+    String Host = "127.0.0.1"; 
     Int32 Port = 55001;
     string data; 
 

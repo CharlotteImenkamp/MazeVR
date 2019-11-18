@@ -36,7 +36,7 @@ freqaudio = 22050;
 pahandle = PsychPortAudio('Open', 2, 1, 4, freqaudio);                      % Die erste 1 mit einer 9 ersetzen!!!!! PsychPortAudio('Open' [, deviceid][, mode (1= sound playback only)][, reqlatencyclass]
 PsychPortAudio('Volume', pahandle, 1.1);                                    % alternativ: 0.5
 
-tonS = MakeBeep (600,1,freqaudio);
+tonS = MakeBeep (601,freqaudio);
 tonD = MakeBeep (1200,1,freqaudio);
 tonD = tonD.*0.8;
 tonE = tonD.*0; 

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI; //NavMesh
+using UnityEngine.AI; 
 
 
 public class FindPath : MonoBehaviour
@@ -74,8 +74,6 @@ public class FindPath : MonoBehaviour
         float minpath = - 1f;
         GameObject nextgObj = null; 
 
-        //hier player finden
-
         Transform start = GameObject.Find(player).transform;
         int l = 0; 
         foreach (GameObject obj in BallManager.Instance.BallList)
@@ -102,9 +100,7 @@ public class FindPath : MonoBehaviour
                 minpath = pathlength;
                 nextObj = obj.name;
                 
-                nextgObj = obj;
-               
-                //nextObj = obj.transform.parent.gameObject.name;
+                nextgObj = obj; 
             }
 
             print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
