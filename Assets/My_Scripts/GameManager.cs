@@ -22,10 +22,10 @@ public class GameManager : MonoBehaviour
     public List<int> sicknessValue;
     public List<int> immersionValue;
 
-    public int[] mapOrder;
+    private int[] mapOrder;
     public int[] newOrder;
-    public int[] mapeasy;
-    public int[] maphard; 
+    private int[] mapeasy;
+    private int[] maphard; 
     public int currentListIdx;
 
     // Awake Singelton
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         currentListIdx = 0;
 
         // time
-        t_block = 10f;          // s
+        t_block = 240f;          // s
         t_left = t_block;
 
         // mapOrder + shuffle

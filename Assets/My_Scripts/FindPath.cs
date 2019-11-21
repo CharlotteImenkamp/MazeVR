@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class FindPath : MonoBehaviour
 {
-    public float updateIntervall = 0.5f;
+    public float updateIntervall = 1f; //0.5
     private float elapsed = 0.0f;
 
     private LineRenderer lineRenderer;
@@ -103,7 +103,6 @@ public class FindPath : MonoBehaviour
                 nextgObj = obj; 
             }
 
-            print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
             l++;
         }
 

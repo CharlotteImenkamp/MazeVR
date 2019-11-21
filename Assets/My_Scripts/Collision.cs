@@ -14,6 +14,7 @@ public class Collision : MonoBehaviour
         {
             GameManager.Instance.ballsValue[currListidx-1] += 1;
             BallManager.Instance.RemoveBall(other.gameObject.transform.GetChild(1).gameObject);
+            Destroy(other); 
         }
     }
 }
