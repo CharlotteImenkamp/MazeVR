@@ -85,7 +85,7 @@ public class LaserInput : MonoBehaviour
                             GameManager.Instance.immersionValue.Add(int.Parse(currButtImm.name));
 
                             //***********check*************************
-                            if (currentListIdx == GameManager.Instance.newOrder.Length)
+                            if (currentListIdx == GameManager.Instance.mapOrder.Length)
                             {
                                 GameManager.Instance.WriteTxt();
                             }
