@@ -87,6 +87,7 @@ public class LaserInput : MonoBehaviour
                             //***********check*************************
                             if (currentListIdx == GameManager.Instance.mapOrder.Length)
                             {
+                                print("writetxt");
                                 GameManager.Instance.WriteTxt();
                             }
 

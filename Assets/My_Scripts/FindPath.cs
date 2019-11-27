@@ -25,7 +25,7 @@ public class FindPath : MonoBehaviour
         // Line Renderer
         lineRenderer = gameObject.GetComponent<LineRenderer>();
 
-        player = "FirstPerson-AIO";
+        player = "[CameraRig]";
 
         // Generate Path
         path = new NavMeshPath();
@@ -75,7 +75,6 @@ public class FindPath : MonoBehaviour
         GameObject nextgObj = null; 
 
         Transform start = GameObject.Find(player).transform;
-        int l = 0; 
         foreach (GameObject obj in BallManager.Instance.BallList)
         {
             pathlength = 0.0f;
@@ -103,8 +102,7 @@ public class FindPath : MonoBehaviour
                 nextgObj = obj; 
             }
 
-            print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
-            l++;
+            //print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
         }
 
         return nextgObj; 

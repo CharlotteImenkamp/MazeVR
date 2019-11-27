@@ -32,13 +32,13 @@ public class CollectBall : MonoBehaviour
         //Trigger Down
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
-            print("Trigger Down");
+            //print("Trigger Down");
             Pickup();
         }
         //Trigger Up
         if (m_GrabAction.GetStateUp(m_Pose.inputSource))
         {
-            print("Trigger up");
+            //print("Trigger up");
             Drop();
         }
     }
@@ -74,6 +74,7 @@ public class CollectBall : MonoBehaviour
         }
 
         //Position
+        BallManager.Instance.BallList.Remove(m_currentObj.transform.parent.gameObject);
         m_currentObj.transform.SetParent(transform);
     }
 
@@ -87,7 +88,7 @@ public class CollectBall : MonoBehaviour
 
         //destroy object and count to list
         GameManager.Instance.ballsValue[currListidx] += 1;
-        BallManager.Instance.RemoveBall(m_currentObj);
+        
         Destroy(m_currentObj);
 
         //clear

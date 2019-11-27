@@ -30,7 +30,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.3654408, y: 1.1144801, z: -0.13387218}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_Children: []
+  m_Children:
+  - {fileID: 7693246996245642559}
   m_Father: {fileID: 9012017490315734103}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,7 +172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7693246996245642559
 Transform:
   m_ObjectHideFlags: 0
@@ -180,11 +181,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5757022606192440529}
   m_LocalRotation: {x: 0.0000000037252894, y: 5.551113e-17, z: 0.00000003073364, w: 1}
-  m_LocalPosition: {x: 0.35444078, y: 1.2534802, z: -0.16387218}
-  m_LocalScale: {x: 0.9637836, y: 0.2720976, z: -0.0066922866}
+  m_LocalPosition: {x: -0.036666688, y: 0.4633335, z: -0.099999994}
+  m_LocalScale: {x: 3.2126117, y: 0.9069919, z: -0.02230762}
   m_Children: []
-  m_Father: {fileID: 9012017490315734103}
-  m_RootOrder: 1
+  m_Father: {fileID: 6421916025829099711}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!215 &819958999325057308
 ReflectionProbe:
@@ -248,7 +249,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6421916025829099711}
-  - {fileID: 7693246996245642559}
   m_Father: {fileID: 8962001334020609355}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -271,14 +271,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8962001334020609355}
     m_Modifications:
-    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
-      propertyPath: m_Name
-      value: RFAIPP_Console_3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
-      propertyPath: m_TagString
-      value: GoldBallTable
-      objectReference: {fileID: 0}
     - target: {fileID: 4763117585630828, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.039
@@ -330,6 +322,14 @@ PrefabInstance:
     - target: {fileID: 4763117585630828, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3633667
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
+      propertyPath: m_Name
+      value: RFAIPP_Console_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
+      propertyPath: m_TagString
+      value: GoldBallTable
       objectReference: {fileID: 0}
     - target: {fileID: 64845746921768634, guid: ab6797f9424804a479af1b2420f1e971,
         type: 3}

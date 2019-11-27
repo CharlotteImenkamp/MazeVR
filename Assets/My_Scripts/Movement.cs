@@ -19,11 +19,13 @@ public class Movement : MonoBehaviour
     public SteamVR_Input_Sources MovementHand;      //Set Hand To Get Input From
     private Rigidbody rb;
 
+   
 
     private void Start()
     {
         CapCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
+
     }
 
     void Update()
@@ -58,7 +60,8 @@ public class Movement : MonoBehaviour
     private void updateCollider()
     {
         CapCollider.height = Head.transform.localPosition.y;
-        CapCollider.center = new Vector3(Head.transform.localPosition.x, Head.transform.localPosition.y / 2, Head.transform.localPosition.z);
+        //CapCollider.center = new Vector3(Head.transform.localPosition.x, Head.transform.localPosition.y / 2, Head.transform.localPosition.z);
+        CapCollider.center = Head.transform.localPosition;    
     }
 
     private void updateInput()

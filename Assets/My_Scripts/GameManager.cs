@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
 
         //Aufzeichnung
-        ballsValue = new int[mapOrder.Length];
+        ballsValue = new int[mapOrder.Length+1];
         sicknessValue = new List<int>();
         immersionValue = new List<int>();
 
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         menuflag = false;
 
         //set new map active
-        SceneManager.LoadScene(mapOrder[currentListIdx]);
+        SceneManager.LoadScene(mapOrder[currentListIdx]+1);
 
         //go on
         currentListIdx++;
@@ -179,14 +179,14 @@ public class GameManager : MonoBehaviour
 
         //ballsValue
         temp = String.Join(",", ballsValueStr);
-        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Proband" + SpielerID + "_balls.txt", temp);
+        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\VR_Behav\Proband" + SpielerID + "_balls.txt", temp);
 
         //immersionValue
         temp = String.Join(",", immersionValueStr);
-        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Proband" + SpielerID + "_immersion.txt", temp);
+        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\VR_Behav\Proband" + SpielerID + "_immersion.txt", temp);
 
         //sickness
         temp = String.Join(",", sicknessValueStr);
-        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\Proband" + SpielerID + "_sickness.txt", temp);
+        System.IO.File.WriteAllText(@"C:\Users\Charlotte\Documents\VR_Behav\Proband" + SpielerID + "_sickness.txt", temp);
     }
 }
