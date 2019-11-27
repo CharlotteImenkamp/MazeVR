@@ -1252,6 +1252,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 42.24
       objectReference: {fileID: 0}
+    - target: {fileID: 6144170499510622688, guid: ace6308914f75fd479fb4a4dbefadf73,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8188910969201140431, guid: ace6308914f75fd479fb4a4dbefadf73,
         type: 3}
       propertyPath: m_IsActive
@@ -2679,8 +2684,8 @@ Transform:
   - {fileID: 1785379206}
   - {fileID: 780059302}
   - {fileID: 860431514}
-  - {fileID: 1336356088}
   - {fileID: 752874160}
+  - {fileID: 1336356088}
   - {fileID: 28322983}
   - {fileID: 1603143946}
   - {fileID: 151809093}
@@ -2693,18 +2698,18 @@ Transform:
   - {fileID: 1294032782}
   - {fileID: 1467575717}
   - {fileID: 1664323610}
+  - {fileID: 505616809}
   - {fileID: 792191186}
   - {fileID: 1159799272}
   - {fileID: 113384942}
   - {fileID: 1901285017}
   - {fileID: 1385889397}
-  - {fileID: 505616809}
   - {fileID: 441942397}
   - {fileID: 1459912013}
+  - {fileID: 874902169}
   - {fileID: 1502487652}
   - {fileID: 1004363264}
   - {fileID: 1363462307}
-  - {fileID: 874902169}
   - {fileID: 1828133055}
   - {fileID: 1940969160}
   m_Father: {fileID: 1256967117}
