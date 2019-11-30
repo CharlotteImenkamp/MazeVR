@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; set; }
 
-    public string SpielerID = "1";
+    public string SpielerID = "3";
 
     //menu
     bool menuflag;
