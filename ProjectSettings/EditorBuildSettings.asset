@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/My_Scenes/StartMenu.unity
-    guid: b865785339f5b5a4481295d1d9800d13
+    path: Assets/My_Scenes/Ruhemessung.unity
+    guid: 645628be3e7cc9f4d95e1164347ffd55
   - enabled: 1
     path: Assets/My_Scenes/Maze0.unity
     guid: 24d7880505ccbaa4a84d33f47d317eac

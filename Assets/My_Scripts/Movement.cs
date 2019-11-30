@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     public Vector2 trackpad;
     public Vector3 moveDirection = new Vector3(0, 0, 0);
-    public int speed = 1;
+    public float speed = 0.8f;
 
     public GameObject Head;
     public GameObject AxisHand;     //Hand Controller GameObject
@@ -19,7 +19,9 @@ public class Movement : MonoBehaviour
     public SteamVR_Input_Sources MovementHand;      //Set Hand To Get Input From
     private Rigidbody rb;
 
-   
+    public SteamVR_Action_Boolean m_press = null;
+
+
 
     private void Start()
     {
@@ -34,6 +36,15 @@ public class Movement : MonoBehaviour
         updateCollider();
 
         //get the angle of the touch and correct it for the rotation of the controller 
+        //if (SteamVR_Actions._default.Squeeze.GetActive) {
+        //    speed = 2;
+        //    print(SteamVR_Actions._default.Squeeze.active); 
+        //}
+        //else
+        //{
+        //    speed = 1; 
+        //}
+
         moveDirection = Quaternion.AngleAxis(Angle(trackpad) + AxisHand.transform.localRotation.eulerAngles.y, Vector3.up) * Vector3.forward * speed;
 
         rb.velocity = new Vector3(0, 0, 0);

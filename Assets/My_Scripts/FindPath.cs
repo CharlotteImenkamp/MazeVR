@@ -102,7 +102,7 @@ public class FindPath : MonoBehaviour
                 nextgObj = obj; 
             }
 
-            //print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
+            print(obj.transform.parent.gameObject.name + ": " + path.corners.Length + " " + pathlength);
         }
 
         return nextgObj; 

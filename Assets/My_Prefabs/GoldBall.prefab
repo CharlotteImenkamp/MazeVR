@@ -271,6 +271,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8962001334020609355}
     m_Modifications:
+    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
+      propertyPath: m_Name
+      value: RFAIPP_Console_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
+      propertyPath: m_TagString
+      value: GoldBallTable
+      objectReference: {fileID: 0}
     - target: {fileID: 4763117585630828, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.039
@@ -322,14 +330,6 @@ PrefabInstance:
     - target: {fileID: 4763117585630828, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3633667
-      objectReference: {fileID: 0}
-    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
-      propertyPath: m_Name
-      value: RFAIPP_Console_3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1245856788164994, guid: ab6797f9424804a479af1b2420f1e971, type: 3}
-      propertyPath: m_TagString
-      value: GoldBallTable
       objectReference: {fileID: 0}
     - target: {fileID: 64845746921768634, guid: ab6797f9424804a479af1b2420f1e971,
         type: 3}

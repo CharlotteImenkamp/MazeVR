@@ -7,15 +7,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; set; }
 
-    public string SpielerID = "1";
+    public string SpielerID = "3";
 
     //menu
     bool menuflag;
-    public bool start_easyKond; 
+    bool ruheflag;
+    bool labyflag; 
+    public bool start_easyKond;
 
     //time
+    public float t_ruhe;
     public float t_block;
-    private float t_left;
+    public float t_left;
 
     //lists
     public int[] ballsValue; 
@@ -46,20 +49,24 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         menuflag = true;
+        labyflag = false; 
+        ruheflag = true; 
 
         currentListIdx = 0;
 
         // time
-        t_block = 10f;          // s
+        t_ruhe = 3f;
+        t_block = 6f;          // s
         t_left = t_block;
 
         // mapOrder + shuffle
         start_easyKond = false; 
 
-        mapeasy = new int[] { 0, 1, 2 };
-        maphard = new int[] { 3, 4, 5 };
+        mapeasy = new int[] { 0, 1 };
+        maphard = new int[] { 2, 3 };
         mapOrder = new int[mapeasy.Length + maphard.Length];
         mapOrder = Shuffle();
+        mapOrder[0] = 0; 
 
 
         //Aufzeichnung
@@ -68,25 +75,43 @@ public class GameManager : MonoBehaviour
         immersionValue = new List<int>();
 
         //Start
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("Ruhemessung");
         
     }
 
     private void Update()
     {
-        t_left -= Time.deltaTime;
+        // Starte mit Ruhemessung
+        if (ruheflag)
+        {
+            t_ruhe -= Time.deltaTime;
 
-        // abhilfe für notVRstuff. Nur drücken, wenn start button vorhanden
+            if (t_ruhe <= 0)
+            {
+                SceneManager.LoadScene("SliderMenu");
+                menuflag = true;
+                ruheflag = false;
+                labyflag = true; 
+            }
+        }
+
+        // Nach der Ruhemessung folgt Labyrinth und Frageraum im Wechsel
+        if (labyflag)
+        {
+            t_left -= Time.deltaTime;
+
+            // Wenn Zeit rum, lade Menü und Stoppe timer
+            if (t_left <= 0 && menuflag == false)
+            {
+                SceneManager.LoadScene("SliderMenu");
+                menuflag = true;
+            }
+        }    
+
+        // ***abhilfe für notVRstuff. Nur drücken, wenn start button vorhanden***löschen vor Anhang
         if (Input.GetKeyDown("space"))
         {
             StartLevelKey();
-        }
-
-        // wenn Zeit rum, lade Menü und stoppe timer
-        if (t_left <= 0 && menuflag == false)
-        {
-            SceneManager.LoadScene("SliderMenu");
-            menuflag = true;
         }
     }
 
