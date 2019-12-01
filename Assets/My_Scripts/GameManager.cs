@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
         currentListIdx = 0;
 
         // time
-        t_ruhe = 3f;
-        t_block = 6f;          // s
+        t_ruhe = 10f;
+        t_block = 300f;          // s
         t_left = t_block;
 
         // mapOrder + shuffle
