@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     public Vector2 trackpad;
     public Vector3 moveDirection = new Vector3(0, 0, 0);
-    public float speed = 0.8f;
+    public float speed = 1f;
 
     public GameObject Head;
     public GameObject AxisHand;     //Hand Controller GameObject
@@ -23,17 +23,19 @@ public class Movement : MonoBehaviour
 
 
 
+
     private void Start()
     {
         CapCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
-
+        //
+        updateCollider(); 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         updateInput();
-        updateCollider();
+        //updateCollider();
 
         //get the angle of the touch and correct it for the rotation of the controller 
         //if (SteamVR_Actions._default.Squeeze.GetActive) {
@@ -44,8 +46,15 @@ public class Movement : MonoBehaviour
         //{
         //    speed = 1; 
         //}
-
-        moveDirection = Quaternion.AngleAxis(Angle(trackpad) + AxisHand.transform.localRotation.eulerAngles.y, Vector3.up) * Vector3.forward * speed;
+        if (trackpad.magnitude > Deadzone && trackpad.x + trackpad.y != 0)
+        {
+            moveDirection = Quaternion.AngleAxis(Angle(trackpad) + AxisHand.transform.localRotation.eulerAngles.y, Vector3.up) * Vector3.forward * speed;
+     
+        }
+        else
+        {
+            moveDirection = Vector3.zero;
+        }
 
         rb.velocity = new Vector3(0, 0, 0);
         if (trackpad.magnitude > Deadzone && trackpad.x + trackpad.y != 0)
@@ -54,6 +63,14 @@ public class Movement : MonoBehaviour
             CapCollider.material = NoFrictionMaterial;
             rb.velocity = moveDirection;
         }
+
+        print(rb.velocity); 
+
+    }
+
+    void LateUpdate()
+    {
+        updateCollider();
     }
 
     public static float Angle(Vector2 p_vector2)
@@ -70,7 +87,7 @@ public class Movement : MonoBehaviour
 
     private void updateCollider()
     {
-        CapCollider.height = Head.transform.localPosition.y;
+        //CapCollider.height = Head.transform.localPosition.y;
         //CapCollider.center = new Vector3(Head.transform.localPosition.x, Head.transform.localPosition.y / 2, Head.transform.localPosition.z);
         CapCollider.center = Head.transform.localPosition;    
     }

@@ -167,9 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motionTarget: {fileID: 1217998073841711513}
-  effectColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.6431373}
+  effectColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.99215686}
   effectCoverage: 1
-  effectFeather: 0.049
+  effectFeather: 0.03
   effectSkybox: {fileID: 8900000, guid: 53ec25ecc46b49f4ab3bc22a92f95802, type: 3}
   applyColorToBackground: 0
   useAngularVelocity: 1
@@ -227,13 +227,13 @@ Rigidbody:
   m_GameObject: {fileID: 1217998073841952865}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_Interpolate: 2
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!136 &7192154833050996893
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -244,10 +244,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
+  m_Radius: 0.19
   m_Height: 0
   m_Direction: 1
-  m_Center: {x: 0, y: 0.01, z: 0}
+  m_Center: {x: 0, y: -0.67, z: 0}
 --- !u!114 &8809317691185033199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,9 +265,9 @@ MonoBehaviour:
   speed: 1
   Head: {fileID: 1217308125826441629}
   AxisHand: {fileID: 1217998073841974033}
-  Deadzone: 0
+  Deadzone: 0.4
   NoFrictionMaterial: {fileID: 13400000, guid: 5b53aeabfa6ff544fa3e6b450195a10c, type: 2}
-  MovementHand: 0
+  MovementHand: 2
   m_press:
     actionPath: 
     needsReinit: 0
@@ -282,7 +282,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3655472758315258420
 MonoBehaviour:
@@ -535,7 +535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7848625855242997583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0.277, z: 1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1217998073841711513}
@@ -707,19 +707,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 20000014031267948, guid: 4d293c8e162f3874b982baadd71153d2,
+        type: 3}
+      propertyPath: field of view
+      value: 40.4
       objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: borderThickness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: color.r
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
 --- !u!1 &1217998073841974033 stripped
 GameObject:

@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
         currentListIdx = 0;
 
         // time
-        t_ruhe = 10f;
-        t_block = 300f;          // s
+        t_ruhe = 3f;
+        t_block = 30f;          // s
         t_left = t_block;
 
         // mapOrder + shuffle
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         maphard = new int[] { 2, 3 };
         mapOrder = new int[mapeasy.Length + maphard.Length];
         mapOrder = Shuffle();
-        mapOrder[0] = 0; 
+        mapOrder[0] = 1;
 
 
         //Aufzeichnung
